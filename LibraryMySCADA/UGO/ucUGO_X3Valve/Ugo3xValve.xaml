@@ -1,0 +1,210 @@
+﻿<UserControl x:Name="Ugo3xValve1" x:Class="LibraryMySCADA.UGO.ucUGO_X3Valve.Ugo3xValve"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:LibraryMySCADA.UGO.ucUGO_X3Valve"
+             mc:Ignorable="d" 
+             d:DesignHeight="300" d:DesignWidth="300">
+    <UserControl.Resources>
+        <Storyboard x:Key="OnMouseEnter1">
+            <ColorAnimationUsingKeyFrames Storyboard.TargetProperty="(Shape.Fill).(SolidColorBrush.Color)" Storyboard.TargetName="ellipse">
+                <EasingColorKeyFrame KeyTime="0" Value="#FFF17979"/>
+            </ColorAnimationUsingKeyFrames>
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[0].(ScaleTransform.ScaleX)" Storyboard.TargetName="path">
+                <EasingDoubleKeyFrame KeyTime="0" Value="1.082"/>
+            </DoubleAnimationUsingKeyFrames>
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[0].(ScaleTransform.ScaleY)" Storyboard.TargetName="path">
+                <EasingDoubleKeyFrame KeyTime="0" Value="1.082"/>
+            </DoubleAnimationUsingKeyFrames>
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.X)" Storyboard.TargetName="path">
+                <EasingDoubleKeyFrame KeyTime="0" Value="0.408"/>
+            </DoubleAnimationUsingKeyFrames>
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.Y)" Storyboard.TargetName="path">
+                <EasingDoubleKeyFrame KeyTime="0" Value="-6.075"/>
+            </DoubleAnimationUsingKeyFrames>
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[0].(ScaleTransform.ScaleX)" Storyboard.TargetName="path1">
+                <EasingDoubleKeyFrame KeyTime="0" Value="1.082"/>
+            </DoubleAnimationUsingKeyFrames>
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[0].(ScaleTransform.ScaleY)" Storyboard.TargetName="path1">
+                <EasingDoubleKeyFrame KeyTime="0" Value="-1.082"/>
+            </DoubleAnimationUsingKeyFrames>
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.X)" Storyboard.TargetName="path1">
+                <EasingDoubleKeyFrame KeyTime="0" Value="0.408"/>
+            </DoubleAnimationUsingKeyFrames>
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.Y)" Storyboard.TargetName="path1">
+                <EasingDoubleKeyFrame KeyTime="0" Value="6.075"/>
+            </DoubleAnimationUsingKeyFrames>
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[0].(ScaleTransform.ScaleX)" Storyboard.TargetName="path2">
+                <EasingDoubleKeyFrame KeyTime="0" Value="1.082"/>
+            </DoubleAnimationUsingKeyFrames>
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[0].(ScaleTransform.ScaleY)" Storyboard.TargetName="path2">
+                <EasingDoubleKeyFrame KeyTime="0" Value="-1.082"/>
+            </DoubleAnimationUsingKeyFrames>
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.X)" Storyboard.TargetName="path2">
+                <EasingDoubleKeyFrame KeyTime="0" Value="6.449"/>
+            </DoubleAnimationUsingKeyFrames>
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.Y)" Storyboard.TargetName="path2">
+                <EasingDoubleKeyFrame KeyTime="0" Value="0.034"/>
+            </DoubleAnimationUsingKeyFrames>
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[0].(ScaleTransform.ScaleX)" Storyboard.TargetName="path3">
+                <EasingDoubleKeyFrame KeyTime="0" Value="1.082"/>
+            </DoubleAnimationUsingKeyFrames>
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[0].(ScaleTransform.ScaleY)" Storyboard.TargetName="path3">
+                <EasingDoubleKeyFrame KeyTime="0" Value="1.082"/>
+            </DoubleAnimationUsingKeyFrames>
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.X)" Storyboard.TargetName="path3">
+                <EasingDoubleKeyFrame KeyTime="0" Value="-3.964"/>
+            </DoubleAnimationUsingKeyFrames>
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.Y)" Storyboard.TargetName="path3">
+                <EasingDoubleKeyFrame KeyTime="0" Value="0.048"/>
+            </DoubleAnimationUsingKeyFrames>
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[0].(ScaleTransform.ScaleX)" Storyboard.TargetName="ellipse1">
+                <EasingDoubleKeyFrame KeyTime="0" Value="1.082"/>
+            </DoubleAnimationUsingKeyFrames>
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[0].(ScaleTransform.ScaleY)" Storyboard.TargetName="ellipse1">
+                <EasingDoubleKeyFrame KeyTime="0" Value="1.082"/>
+            </DoubleAnimationUsingKeyFrames>
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.X)" Storyboard.TargetName="ellipse1">
+                <EasingDoubleKeyFrame KeyTime="0" Value="-9.143"/>
+            </DoubleAnimationUsingKeyFrames>
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.Y)" Storyboard.TargetName="ellipse1">
+                <EasingDoubleKeyFrame KeyTime="0" Value="0.088"/>
+            </DoubleAnimationUsingKeyFrames>
+        </Storyboard>
+        <Storyboard x:Key="OnMouseLeave1">
+            <ColorAnimationUsingKeyFrames Storyboard.TargetProperty="(Shape.Fill).(SolidColorBrush.Color)" Storyboard.TargetName="ellipse">
+                <EasingColorKeyFrame KeyTime="0" Value="#FFE4E4E4"/>
+            </ColorAnimationUsingKeyFrames>
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[0].(ScaleTransform.ScaleY)" Storyboard.TargetName="path">
+                <EasingDoubleKeyFrame KeyTime="0" Value="1.032"/>
+            </DoubleAnimationUsingKeyFrames>
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.Y)" Storyboard.TargetName="path">
+                <EasingDoubleKeyFrame KeyTime="0" Value="-2.37"/>
+            </DoubleAnimationUsingKeyFrames>
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[0].(ScaleTransform.ScaleY)" Storyboard.TargetName="path1">
+                <EasingDoubleKeyFrame KeyTime="0" Value="-1.032"/>
+            </DoubleAnimationUsingKeyFrames>
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.Y)" Storyboard.TargetName="path1">
+                <EasingDoubleKeyFrame KeyTime="0" Value="2.37"/>
+            </DoubleAnimationUsingKeyFrames>
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[0].(ScaleTransform.ScaleX)" Storyboard.TargetName="path2">
+                <EasingDoubleKeyFrame KeyTime="0" Value="1.032"/>
+            </DoubleAnimationUsingKeyFrames>
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.Y)" Storyboard.TargetName="path2">
+                <EasingDoubleKeyFrame KeyTime="0" Value="0.013"/>
+            </DoubleAnimationUsingKeyFrames>
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[0].(ScaleTransform.ScaleY)" Storyboard.TargetName="path3">
+                <EasingDoubleKeyFrame KeyTime="0" Value="1.032"/>
+            </DoubleAnimationUsingKeyFrames>
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.Y)" Storyboard.TargetName="path3">
+                <EasingDoubleKeyFrame KeyTime="0" Value="0.019"/>
+            </DoubleAnimationUsingKeyFrames>
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[0].(ScaleTransform.ScaleX)" Storyboard.TargetName="path">
+                <EasingDoubleKeyFrame KeyTime="0" Value="1.032"/>
+            </DoubleAnimationUsingKeyFrames>
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.X)" Storyboard.TargetName="path">
+                <EasingDoubleKeyFrame KeyTime="0" Value="-0.523"/>
+            </DoubleAnimationUsingKeyFrames>
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[0].(ScaleTransform.ScaleX)" Storyboard.TargetName="path1">
+                <EasingDoubleKeyFrame KeyTime="0" Value="1.032"/>
+            </DoubleAnimationUsingKeyFrames>
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.X)" Storyboard.TargetName="path1">
+                <EasingDoubleKeyFrame KeyTime="0" Value="-0.523"/>
+            </DoubleAnimationUsingKeyFrames>
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[0].(ScaleTransform.ScaleY)" Storyboard.TargetName="path2">
+                <EasingDoubleKeyFrame KeyTime="0" Value="-1.032"/>
+            </DoubleAnimationUsingKeyFrames>
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.X)" Storyboard.TargetName="path2">
+                <EasingDoubleKeyFrame KeyTime="0" Value="1.834"/>
+            </DoubleAnimationUsingKeyFrames>
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[0].(ScaleTransform.ScaleX)" Storyboard.TargetName="path3">
+                <EasingDoubleKeyFrame KeyTime="0" Value="1.032"/>
+            </DoubleAnimationUsingKeyFrames>
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.X)" Storyboard.TargetName="path3">
+                <EasingDoubleKeyFrame KeyTime="0" Value="-2.229"/>
+            </DoubleAnimationUsingKeyFrames>
+        </Storyboard>
+    </UserControl.Resources>
+    <UserControl.Triggers>
+        <EventTrigger RoutedEvent="UIElement.MouseEnter">
+            <BeginStoryboard Storyboard="{StaticResource OnMouseEnter1}"/>
+        </EventTrigger>
+        <EventTrigger RoutedEvent="UIElement.MouseLeave">
+            <BeginStoryboard x:Name="OnMouseLeave1_BeginStoryboard" Storyboard="{StaticResource OnMouseLeave1}"/>
+        </EventTrigger>
+        <EventTrigger RoutedEvent="UIElement.MouseLeftButtonDown">
+            <BeginStoryboard x:Name="OnMouseLeave1_BeginStoryboard1" Storyboard="{StaticResource OnMouseLeave1}"/>
+        </EventTrigger>
+        <EventTrigger RoutedEvent="UIElement.MouseLeftButtonUp">
+            <BeginStoryboard Storyboard="{StaticResource OnMouseEnter1}"/>
+        </EventTrigger>
+    </UserControl.Triggers>
+    <Grid>
+        <Viewbox Stretch="Fill">
+            <Grid Height="300" Width="300">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="149*"/>
+                    <RowDefinition Height="151*"/>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="51*"/>
+                    <ColumnDefinition Width="49*"/>
+                </Grid.ColumnDefinitions>
+                <Ellipse x:Name="ellipse" Margin="-34,-39,-40,-35" Stroke="Black" StrokeThickness="4" Grid.ColumnSpan="2" Grid.RowSpan="2" Fill="#FFE4E4E4" Opacity="0.5"/>
+
+                <Path x:Name="path" Data="M5,4 L201.5,4.5 103.5,151.83333 z" Fill="#FF202083" Margin="58,6,52,7" Stretch="Fill" Stroke="Black" Grid.ColumnSpan="2" StrokeThickness="4" RenderTransformOrigin="0.5,0.5">
+                    <Path.RenderTransform>
+                        <TransformGroup>
+                            <ScaleTransform/>
+                            <SkewTransform/>
+                            <RotateTransform/>
+                            <TranslateTransform/>
+                        </TransformGroup>
+                    </Path.RenderTransform>
+                </Path>
+                <Path x:Name="path1" Data="M5,4 L201.5,4.5 103.5,151.83333 z" Fill="#FFA6112C" Margin="58,5.833,52,9.167" Stretch="Fill" Stroke="Black" RenderTransformOrigin="0.5,0.5" Grid.ColumnSpan="2" Grid.Row="1" StrokeThickness="4">
+                    <Path.RenderTransform>
+                        <TransformGroup>
+                            <ScaleTransform ScaleY="-1"/>
+                            <SkewTransform/>
+                            <RotateTransform/>
+                            <TranslateTransform/>
+                        </TransformGroup>
+                    </Path.RenderTransform>
+                </Path>
+                <Path x:Name="path2" Data="M5,4 L201.5,4.5 103.5,151.83333 z" Fill="#FF202083" Margin="132,80.833,-22,83.167" Stretch="Fill" Stroke="Black" RenderTransformOrigin="0.5,0.5" Grid.ColumnSpan="2" Grid.RowSpan="2" StrokeThickness="4">
+                    <Path.RenderTransform>
+                        <TransformGroup>
+                            <ScaleTransform ScaleY="-1"/>
+                            <SkewTransform/>
+                            <RotateTransform Angle="-90"/>
+                            <TranslateTransform/>
+                        </TransformGroup>
+                    </Path.RenderTransform>
+                </Path>
+                <Path x:Name="path3" Data="M49,147 L153.04326,147" Fill="#FFF4F4F5" Margin="43.833,146.167,144.958,148.166" Stretch="Fill" Stroke="Black" Grid.RowSpan="2" StrokeThickness="4" Grid.ColumnSpan="2" RenderTransformOrigin="0.5,0.5">
+                    <Path.RenderTransform>
+                        <TransformGroup>
+                            <ScaleTransform/>
+                            <SkewTransform/>
+                            <RotateTransform/>
+                            <TranslateTransform/>
+                        </TransformGroup>
+                    </Path.RenderTransform>
+                </Path>
+                <Ellipse x:Name="ellipse1" Fill="#FF1A1A64" Margin="1,114.5,82,115.5" Stroke="Black" Grid.RowSpan="2" StrokeThickness="4" RenderTransformOrigin="0.5,0.5">
+                    <Ellipse.RenderTransform>
+                        <TransformGroup>
+                            <ScaleTransform/>
+                            <SkewTransform/>
+                            <RotateTransform/>
+                            <TranslateTransform/>
+                        </TransformGroup>
+                    </Ellipse.RenderTransform>
+                </Ellipse>
+
+            </Grid>
+        </Viewbox>
+    </Grid>
+</UserControl>

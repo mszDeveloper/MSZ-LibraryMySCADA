@@ -1,0 +1,174 @@
+﻿<UserControl
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:LibraryMySCADA"
+             xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity" xmlns:ei="http://schemas.microsoft.com/expression/2010/interactions"
+             x:Name="UGO_Driver" x:Class="LibraryMySCADA.ucUGO_DRIVERControl"
+             mc:Ignorable="d" Grid.IsSharedSizeScope="True" UseLayoutRounding="True" ScrollViewer.VerticalScrollBarVisibility="Disabled" MinWidth="16" MinHeight="16" HorizontalAlignment="Center" VerticalAlignment="Center" ToolTip="{Binding ToolTipText, ElementName=UGO_Driver}" Height="400" Width="400">
+    <UserControl.Resources>
+        <BooleanToVisibilityConverter x:Key="BooleanToVisibilityConverter"/>
+        <Style x:Key="LabelStyle1" TargetType="{x:Type Label}">
+            <Setter Property="Foreground" Value="{DynamicResource {x:Static SystemColors.ControlTextBrushKey}}"/>
+            <Setter Property="Background" Value="Transparent"/>
+            <Setter Property="Padding" Value="5"/>
+            <Setter Property="HorizontalContentAlignment" Value="Left"/>
+            <Setter Property="VerticalContentAlignment" Value="Top"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type Label}">
+                        <ContentPresenter HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" RecognizesAccessKey="True" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}" Height="26" Width="18" UseLayoutRounding="True" Margin="-4,28,19,-14"/>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsEnabled" Value="false">
+                                <Setter Property="Foreground" Value="{DynamicResource {x:Static SystemColors.GrayTextBrushKey}}"/>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+        <Storyboard x:Key="OnMouseMove1">
+            <ColorAnimationUsingKeyFrames Storyboard.TargetProperty="(Shape.Stroke).(SolidColorBrush.Color)" Storyboard.TargetName="ellipse">
+                <EasingColorKeyFrame KeyTime="0" Value="#FFFF1700"/>
+            </ColorAnimationUsingKeyFrames>
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[0].(ScaleTransform.ScaleX)" Storyboard.TargetName="ellipse">
+                <EasingDoubleKeyFrame KeyTime="0" Value="1.08"/>
+            </DoubleAnimationUsingKeyFrames>
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[0].(ScaleTransform.ScaleY)" Storyboard.TargetName="ellipse">
+                <EasingDoubleKeyFrame KeyTime="0" Value="1.08"/>
+            </DoubleAnimationUsingKeyFrames>
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[0].(ScaleTransform.ScaleX)" Storyboard.TargetName="path">
+                <EasingDoubleKeyFrame KeyTime="0" Value="1.08"/>
+            </DoubleAnimationUsingKeyFrames>
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[0].(ScaleTransform.ScaleY)" Storyboard.TargetName="path">
+                <EasingDoubleKeyFrame KeyTime="0" Value="1.08"/>
+            </DoubleAnimationUsingKeyFrames>
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.X)" Storyboard.TargetName="path">
+                <EasingDoubleKeyFrame KeyTime="0" Value="3.027"/>
+            </DoubleAnimationUsingKeyFrames>
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.Y)" Storyboard.TargetName="path">
+                <EasingDoubleKeyFrame KeyTime="0" Value="0.026"/>
+            </DoubleAnimationUsingKeyFrames>
+        </Storyboard>
+        <Storyboard x:Key="OnMouseLeave1">
+            <ColorAnimationUsingKeyFrames Storyboard.TargetProperty="(Shape.Stroke).(SolidColorBrush.Color)" Storyboard.TargetName="ellipse">
+                <EasingColorKeyFrame KeyTime="0" Value="Black"/>
+            </ColorAnimationUsingKeyFrames>
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[0].(ScaleTransform.ScaleX)" Storyboard.TargetName="ellipse">
+                <EasingDoubleKeyFrame KeyTime="0" Value="1"/>
+            </DoubleAnimationUsingKeyFrames>
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[0].(ScaleTransform.ScaleY)" Storyboard.TargetName="ellipse">
+                <EasingDoubleKeyFrame KeyTime="0" Value="1"/>
+            </DoubleAnimationUsingKeyFrames>
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[0].(ScaleTransform.ScaleX)" Storyboard.TargetName="path">
+                <EasingDoubleKeyFrame KeyTime="0" Value="1"/>
+            </DoubleAnimationUsingKeyFrames>
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[0].(ScaleTransform.ScaleY)" Storyboard.TargetName="path">
+                <EasingDoubleKeyFrame KeyTime="0" Value="1"/>
+            </DoubleAnimationUsingKeyFrames>
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.X)" Storyboard.TargetName="path">
+                <EasingDoubleKeyFrame KeyTime="0" Value="0"/>
+            </DoubleAnimationUsingKeyFrames>
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.Y)" Storyboard.TargetName="path">
+                <EasingDoubleKeyFrame KeyTime="0" Value="0"/>
+            </DoubleAnimationUsingKeyFrames>
+        </Storyboard>
+    </UserControl.Resources>
+    <UserControl.Triggers>
+        <EventTrigger RoutedEvent="UIElement.MouseEnter">
+            <BeginStoryboard Storyboard="{StaticResource OnMouseMove1}"/>
+        </EventTrigger>
+        <EventTrigger RoutedEvent="UIElement.MouseLeftButtonUp">
+            <BeginStoryboard Storyboard="{StaticResource OnMouseMove1}"/>
+        </EventTrigger>
+        <EventTrigger RoutedEvent="UIElement.MouseLeftButtonDown">
+            <BeginStoryboard x:Name="OnMouseLeave1_BeginStoryboard1" Storyboard="{StaticResource OnMouseLeave1}"/>
+        </EventTrigger>
+        <EventTrigger RoutedEvent="UIElement.MouseLeave">
+            <BeginStoryboard x:Name="OnMouseLeave1_BeginStoryboard" Storyboard="{StaticResource OnMouseLeave1}"/>
+        </EventTrigger>
+    </UserControl.Triggers>
+    <Viewbox Stretch="Fill">
+        <VisualStateManager.VisualStateGroups>
+            <VisualStateGroup x:Name="vsOnnOff">
+                <VisualStateGroup.Transitions>
+                    <VisualTransition GeneratedDuration="0"/>
+                </VisualStateGroup.Transitions>
+                <VisualState x:Name="vsOnnOff_Disable">
+                    <Storyboard>
+                        <ColorAnimationUsingKeyFrames Storyboard.TargetProperty="(Shape.Stroke).(SolidColorBrush.Color)" Storyboard.TargetName="ellipse">
+                            <EasingColorKeyFrame KeyTime="0:0:1" Value="#FF9C9C9C"/>
+                        </ColorAnimationUsingKeyFrames>
+                        <ColorAnimationUsingKeyFrames Storyboard.TargetProperty="(Shape.Fill).(SolidColorBrush.Color)" Storyboard.TargetName="path">
+                            <EasingColorKeyFrame KeyTime="0:0:1" Value="#FFA2A2A2"/>
+                        </ColorAnimationUsingKeyFrames>
+                        <ColorAnimationUsingKeyFrames Storyboard.TargetProperty="(Shape.Stroke).(SolidColorBrush.Color)" Storyboard.TargetName="path">
+                            <EasingColorKeyFrame KeyTime="0:0:1" Value="White"/>
+                        </ColorAnimationUsingKeyFrames>
+                    </Storyboard>
+                </VisualState>
+                <VisualState x:Name="vsOnnOff_Eneble">
+                    <Storyboard/>
+                </VisualState>
+                <VisualState x:Name="vsAlarmOn">
+                    <Storyboard RepeatBehavior="Forever" AutoReverse="True">
+                        <ColorAnimationUsingKeyFrames Storyboard.TargetProperty="(Shape.Fill).(SolidColorBrush.Color)" Storyboard.TargetName="ellipse">
+                            <EasingColorKeyFrame KeyTime="0" Value="#FFB0ADAD"/>
+                            <EasingColorKeyFrame KeyTime="0:0:1.02" Value="Red"/>
+                            <EasingColorKeyFrame KeyTime="0:0:1.32" Value="Red"/>
+                        </ColorAnimationUsingKeyFrames>
+                    </Storyboard>
+                </VisualState>
+                <VisualState x:Name="vsAlarmOFF">
+                    <Storyboard/>
+                </VisualState>
+            </VisualStateGroup>
+            <VisualStateGroup x:Name="vsWorker">
+                <VisualStateGroup.Transitions>
+                    <VisualTransition GeneratedDuration="0"/>
+                </VisualStateGroup.Transitions>
+                <VisualState x:Name="vsWorkerOn">
+                    <Storyboard AutoReverse="False" RepeatBehavior="1x">
+                        <ColorAnimationUsingKeyFrames Storyboard.TargetProperty="(Shape.Fill).(SolidColorBrush.Color)" Storyboard.TargetName="path">
+                            <EasingColorKeyFrame KeyTime="0" Value="#FF35A600"/>
+                            <EasingColorKeyFrame KeyTime="0:0:2" Value="#FF2FFF00"/>
+                        </ColorAnimationUsingKeyFrames>
+                    </Storyboard>
+                </VisualState>
+                <VisualState x:Name="vsWorkerOff">
+                    <Storyboard/>
+                </VisualState>
+            </VisualStateGroup>
+        </VisualStateManager.VisualStateGroups>
+        <Grid x:Name="grid1" ScrollViewer.VerticalScrollBarVisibility="Disabled" Height="416" Width="442">
+            <i:Interaction.Behaviors>
+                <ei:DataStateBehavior x:Name="DisableEnebleState" TrueState="vsOnnOff_Disable" FalseState="vsOnnOff_Eneble" Binding="{Binding OnOff, ElementName=UGO_Driver}" Value="true"/>
+                <ei:DataStateBehavior x:Name="AlarmOnOff" Binding="{Binding Alarm, ElementName=UGO_Driver}" Value="true" TrueState="vsAlarmOn" FalseState="vsAlarmOFF"/>
+                <ei:DataStateBehavior x:Name="WorkerOnOff" Binding="{Binding Worker, ElementName=UGO_Driver}" Value="true" TrueState="vsWorkerOn" FalseState="vsWorkerOff"/>
+            </i:Interaction.Behaviors>
+            <Ellipse x:Name="ellipse" Fill="#FFB0ADAD" Stroke="Black" StrokeThickness="8" RenderTransformOrigin="0.5,0.5">
+                <Ellipse.RenderTransform>
+                    <TransformGroup>
+                        <ScaleTransform/>
+                        <SkewTransform/>
+                        <RotateTransform/>
+                        <TranslateTransform/>
+                    </TransformGroup>
+                </Ellipse.RenderTransform>
+            </Ellipse>
+            <Path x:Name="path" Data="M20.5,0.5 L56.000171,20 20.5,39.5 z" Fill="#FFD17C01" Margin="128.969,67.254,53.365,66.102" Stretch="Fill" Stroke="#FF5D5858" RenderTransformOrigin="0.5,0.5" StrokeThickness="2" UseLayoutRounding="False">
+                <Path.RenderTransform>
+                    <TransformGroup>
+                        <ScaleTransform/>
+                        <SkewTransform/>
+                        <RotateTransform/>
+                        <TranslateTransform/>
+                    </TransformGroup>
+                </Path.RenderTransform>
+            </Path>
+            <Image Margin="235,216,-42,-39" Stretch="Fill" Source="Font-A.png" Visibility="{Binding AutoManual, Converter={StaticResource BooleanToVisibilityConverter}, ElementName=UGO_Driver}"/>
+
+        </Grid>
+    </Viewbox>
+</UserControl>

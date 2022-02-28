@@ -1,0 +1,143 @@
+﻿<UserControl
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:LibraryMySCADA.Valve3xElectro"
+             xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity" xmlns:ei="http://schemas.microsoft.com/expression/2010/interactions" x:Name="userControl" x:Class="LibraryMySCADA.Valve3xElectro.Valve3xElectro"
+             mc:Ignorable="d" Loaded="userControl_Loaded" Height="206.928" Width="172.604">
+    <UserControl.Resources>
+        <Storyboard x:Key="OnMouseEnter1">
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[0].(ScaleTransform.ScaleX)" Storyboard.TargetName="viewbox">
+                <EasingDoubleKeyFrame KeyTime="0" Value="1.023"/>
+            </DoubleAnimationUsingKeyFrames>
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[0].(ScaleTransform.ScaleY)" Storyboard.TargetName="viewbox">
+                <EasingDoubleKeyFrame KeyTime="0" Value="1.023"/>
+            </DoubleAnimationUsingKeyFrames>
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.X)" Storyboard.TargetName="viewbox">
+                <EasingDoubleKeyFrame KeyTime="0" Value="0"/>
+            </DoubleAnimationUsingKeyFrames>
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.Y)" Storyboard.TargetName="viewbox">
+                <EasingDoubleKeyFrame KeyTime="0" Value="0"/>
+            </DoubleAnimationUsingKeyFrames>
+        </Storyboard>
+        <Storyboard x:Key="OnMouseLeave1">
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[0].(ScaleTransform.ScaleX)" Storyboard.TargetName="viewbox">
+                <EasingDoubleKeyFrame KeyTime="0" Value="0.993"/>
+            </DoubleAnimationUsingKeyFrames>
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[0].(ScaleTransform.ScaleY)" Storyboard.TargetName="viewbox">
+                <EasingDoubleKeyFrame KeyTime="0" Value="0.993"/>
+            </DoubleAnimationUsingKeyFrames>
+        </Storyboard>
+    </UserControl.Resources>
+    <UserControl.Triggers>
+        <EventTrigger RoutedEvent="UIElement.MouseEnter">
+            <BeginStoryboard Storyboard="{StaticResource OnMouseEnter1}"/>
+        </EventTrigger>
+        <EventTrigger RoutedEvent="UIElement.MouseLeave">
+            <BeginStoryboard x:Name="OnMouseLeave1_BeginStoryboard" Storyboard="{StaticResource OnMouseLeave1}"/>
+        </EventTrigger>
+    </UserControl.Triggers>
+    <i:Interaction.Triggers>
+        <ei:DataTrigger Binding="{Binding OpenClose, ElementName=userControl}" Value="True" Comparison="NotEqual">
+            <ei:ChangePropertyAction x:Name="rightFalse" TargetObject="{Binding ElementName=rightPath}" TargetName="rightPath" PropertyName="Fill" Value="{Binding offBrush, ElementName=userControl}" Duration="2.0:0:0"/>
+            <ei:ChangePropertyAction x:Name="leftTrue" TargetObject="{Binding ElementName=leftPath}" TargetName="leftPath" PropertyName="Fill" Value="{Binding onBrush, ElementName=userControl}" Duration="2.0:0:0"/>
+        </ei:DataTrigger>
+        <ei:DataTrigger Binding="{Binding OpenClose, ElementName=userControl}" Value="True" Comparison="Equal">
+            <ei:ChangePropertyAction x:Name="leftFalse" TargetObject="{Binding ElementName=leftPath}" TargetName="leftPath" PropertyName="Fill" Value="{Binding offBrush, ElementName=userControl}" Duration="2.0:0:0"/>
+        </ei:DataTrigger>
+        <ei:DataTrigger Binding="{Binding OpenClose, ElementName=userControl}" Value="True">
+            <ei:ChangePropertyAction x:Name="rightTrue" TargetObject="{Binding ElementName=rightPath}" TargetName="rightPath" PropertyName="Fill" Value="{Binding onBrush, ElementName=userControl}" Duration="2.0:0:0"/>
+        </ei:DataTrigger>
+    </i:Interaction.Triggers>
+    <Viewbox x:Name="viewbox" AutomationProperties.IsOffscreenBehavior="FromClip" Stretch="Fill" RenderTransformOrigin="0.5,0.5" Margin="0">
+        <Viewbox.RenderTransform>
+            <TransformGroup>
+                <ScaleTransform/>
+                <SkewTransform/>
+                <RotateTransform/>
+                <TranslateTransform/>
+            </TransformGroup>
+        </Viewbox.RenderTransform>
+        <i:Interaction.Triggers>
+            <i:EventTrigger>
+                <ei:GoToStateAction StateName="Close" UseTransitions="False"/>
+            </i:EventTrigger>
+        </i:Interaction.Triggers>
+        <i:Interaction.Behaviors>
+            <ei:DataStateBehavior Binding="{Binding OpenClose, ElementName=userControl}" Value="true" TrueState="Open" FalseState="Close"/>
+        </i:Interaction.Behaviors>
+        <VisualStateManager.VisualStateGroups>
+            <VisualStateGroup x:Name="VisualStateGroup">
+                <VisualStateGroup.Transitions>
+                    <VisualTransition GeneratedDuration="0:0:1"/>
+                    <VisualTransition From="Open" GeneratedDuration="0:0:1" To="Close"/>
+                    <VisualTransition From="Close" GeneratedDuration="0:0:1" To="Open"/>
+                </VisualStateGroup.Transitions>
+                <VisualState x:Name="Open">
+                    <Storyboard>
+                        <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.Y)" Storyboard.TargetName="Shtok">
+                            <EasingDoubleKeyFrame KeyTime="0" Value="-40"/>
+                        </DoubleAnimationUsingKeyFrames>
+                        <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Opacity)" Storyboard.TargetName="ArrowLeft">
+                            <EasingDoubleKeyFrame KeyTime="0" Value="0"/>
+                        </DoubleAnimationUsingKeyFrames>
+                        <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Opacity)" Storyboard.TargetName="ArrowLeftEnd">
+                            <EasingDoubleKeyFrame KeyTime="0" Value="0"/>
+                        </DoubleAnimationUsingKeyFrames>
+                    </Storyboard>
+                </VisualState>
+                <VisualState x:Name="Close">
+                    <Storyboard>
+                        <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Opacity)" Storyboard.TargetName="ArrowRight">
+                            <EasingDoubleKeyFrame KeyTime="0" Value="0"/>
+                        </DoubleAnimationUsingKeyFrames>
+                        <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Opacity)" Storyboard.TargetName="ArrowRightEnd">
+                            <EasingDoubleKeyFrame KeyTime="0" Value="0"/>
+                        </DoubleAnimationUsingKeyFrames>
+                    </Storyboard>
+                </VisualState>
+            </VisualStateGroup>
+        </VisualStateManager.VisualStateGroups>
+        <Grid x:Name="grid" Height="295.928" Width="205.635" RenderTransformOrigin="0.5,0.5">
+            <Grid.RenderTransform>
+                <TransformGroup>
+                    <ScaleTransform/>
+                    <SkewTransform/>
+                    <RotateTransform/>
+                    <TranslateTransform/>
+                </TransformGroup>
+            </Grid.RenderTransform>
+            <Path x:Name="leftPath" Data="M8.6788991,148.00709 L38.701835,147.92553 41.691132,153.55319 C44.833238,154.08978 46.70035,154.85027 47.279817,155.83688 L63.655963,156 63.655963,173.61702 46.110092,173.61702 45.720184,185.85106 40.261468,185.85106 40.131241,191.39688 8.1573727,191.07357 z" HorizontalAlignment="Left" Height="89.833" Margin="3.332,145.5,0,0" Stretch="Fill" VerticalAlignment="Top" Width="72.168" Fill="{Binding onBrush, ElementName=userControl}"/>
+            <Path x:Name="rightPath" Data="M131.66667,195.33333 L155.33301,182.00033 155.33301,158.33368 160.12551,157.00062 160.00042,149.66742 165.3339,145.33376 202.66895,145.66742 202.62727,235.12468 161.50043,235.12468 160.00038,224.8748 152.5001,224.8748 150.12501,239.62463 137.33321,239.66663 131.66634,237.33299 z" HorizontalAlignment="Left" Height="94.334" Margin="131.667,145.333,0,0" Stretch="Fill" VerticalAlignment="Top" Width="71" Fill="{Binding offBrush, ElementName=userControl}"/>
+
+            <Path x:Name="path2" Data="M75.309335,197.13554 L75.28387,165.26466 73.794877,165.03535 74.064829,152.25622 75.552002,151.24612 75.615407,141.42424 79.518853,141.69853 79.589749,150.13636 81.089742,152.66161 81.58974,164.40404 81.55125,181.82828 79.893069,190.17163 79.912168,222.92084 80.115382,230.0606 81.012793,233.34343 81.025433,261.87368 74.230796,262.25754 74.230773,232.71211 75.012841,231.44947 75.051302,225.2626 75.538465,223.6212 z" HorizontalAlignment="Left" Height="160.5" Margin="53.333,129,0,0" Stretch="Fill" VerticalAlignment="Top" Width="102.334" Fill="{Binding onBrush, ElementName=userControl}"/>
+
+            <Image x:Name="image" Source="Images/клапан 3х ходовой.png" HorizontalAlignment="Left" Width="224.883" Margin="0,0,-19.248,0"/>
+            <Image x:Name="Shtok" Margin="73,183,0,0" Source="Images/шток клапана 3х ходового.png" HorizontalAlignment="Left" VerticalAlignment="Top" RenderTransformOrigin="0.5,0.5" Height="64.746" Width="59.574">
+                <Image.RenderTransform>
+                    <TransformGroup>
+                        <ScaleTransform/>
+                        <SkewTransform/>
+                        <RotateTransform/>
+                        <TranslateTransform/>
+                    </TransformGroup>
+                </Image.RenderTransform>
+            </Image>
+            <Path x:Name="ArrowLeft" Data="M108.6075,284.12927 C110.20035,254.70099 93.816545,239.41604 92.311584,225.71996 86.999151,177.3735 101.24612,175.23039 56.766325,176.31826 33.660466,176.88337 37.593522,187.35809 11.562599,186.30708" HorizontalAlignment="Left" Height="108.425" Margin="12,176.575,0,0" Stretch="Fill" Stroke="#FFF12C2C" VerticalAlignment="Top" Width="97.094" StrokeThickness="7"/>
+            <Path x:Name="ArrowRight" Data="M104.07266,280.49475 C103.07266,263.99469 108,239 116.5,229.5 125,220 142.66667,210.49978 160,200.99978 174,186.4997 165,184.00008 194.5,185.00007" HorizontalAlignment="Left" Height="101.694" Margin="101.684,181.806,0,0" Stretch="Fill" Stroke="#FFF12C2C" StrokeThickness="7" VerticalAlignment="Top" Width="95.816"/>
+            <Path x:Name="ArrowLeftEnd" Data="M21,180.5 L20.666658,202.50033 14.999379,191.00016 z" HorizontalAlignment="Left" Height="29.666" Margin="9,177.167,0,0" Stretch="Fill" Stroke="#FFF12C2C" StrokeThickness="13" VerticalAlignment="Top" Width="19"/>
+            <Path x:Name="ArrowRightEnd" Data="M21,180.5 L20.666658,202.50033 14.999379,191.00016 z" HorizontalAlignment="Left" Height="28.334" Margin="177.333,172.5,0,0" Stretch="Fill" Stroke="#FFF12C2C" StrokeThickness="13" VerticalAlignment="Top" Width="19" RenderTransformOrigin="0.5,0.5">
+                <Path.RenderTransform>
+                    <TransformGroup>
+                        <ScaleTransform/>
+                        <SkewTransform/>
+                        <RotateTransform Angle="-180"/>
+                        <TranslateTransform/>
+                    </TransformGroup>
+                </Path.RenderTransform>
+            </Path>
+
+        </Grid>
+    </Viewbox>
+</UserControl>

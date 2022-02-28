@@ -1,0 +1,489 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{F3FE6AD4-247B-4455-AB14-9937398B2271}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>LibraryMySCADA</RootNamespace>
+    <AssemblyName>LibraryMySCADA</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Microsoft.Expression.Controls, Version=4.5.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
+    <Reference Include="Microsoft.Expression.Drawing, Version=4.5.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
+    <Reference Include="Microsoft.Expression.Interactions, Version=4.5.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
+    <Reference Include="Microsoft.Expression.Prototyping.Interactivity, Version=4.5.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
+    <Reference Include="PresentationCore" />
+    <Reference Include="PresentationFramework" />
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Windows.Interactivity, Version=4.5.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
+    <Reference Include="System.Xaml" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xml" />
+    <Reference Include="WindowsBase" />
+    <Reference Include="wpfModBUSLib, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\wpfModBUSLib.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="AirFans\ucAirFans.xaml.cs">
+      <DependentUpon>ucAirFans.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ArrowPointer\ucArrowPointer.xaml.cs" />
+    <Compile Include="BackValve\ucBackValve.xaml.cs">
+      <DependentUpon>ucBackValve.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Blower\Blower.xaml.cs">
+      <DependentUpon>Blower.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="CapacityAllLevele\CapacityAnyAmountLevels.xaml.cs">
+      <DependentUpon>CapacityAnyAmountLevels.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="CapacityMoreLevels\ucCapacityMoreLevels.xaml.cs">
+      <DependentUpon>ucCapacityMoreLevels.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Capacity\ucCapacity.xaml.cs">
+      <DependentUpon>ucCapacity.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Chart1\ucChart.xaml.cs">
+      <DependentUpon>ucChart.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Class1.cs" />
+    <Compile Include="ClassConverters.cs" />
+    <Compile Include="ClassTemplate.cs" />
+    <Compile Include="ClassVirtualAddForWindow.cs" />
+    <Compile Include="ClassVirtualAdd.cs" />
+    <Compile Include="CounterNumericAnim\CounterNumericAnim.xaml.cs">
+      <DependentUpon>CounterNumericAnim.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="DataSaveSCADA.cs" />
+    <Compile Include="DirectionPanel\DirectionPanel.xaml.cs">
+      <DependentUpon>DirectionPanel.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="FEEL.cs" />
+    <Compile Include="Flowmeter\FlowMeterControl.xaml.cs">
+      <DependentUpon>FlowMeterControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Flowmeter\ucFlowmeter.xaml.cs">
+      <DependentUpon>ucFlowmeter.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="FlowShutters\FlowShutters.xaml.cs">
+      <DependentUpon>FlowShutters.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="FumeValve\FumeValve.xaml.cs">
+      <DependentUpon>FumeValve.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Logics\ANDorOR.xaml.cs">
+      <DependentUpon>ANDorOR.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Logics\NOT.xaml.cs">
+      <DependentUpon>NOT.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Mixer\ucMixer.xaml.cs">
+      <DependentUpon>ucMixer.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="AirFans\oneFanControl.xaml.cs">
+      <DependentUpon>oneFanControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="OneFlow\OneFlow.xaml.cs">
+      <DependentUpon>OneFlow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="PathAnimation\ucPathAnimation.xaml.cs">
+      <DependentUpon>ucPathAnimation.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="PID\PID.cs" />
+    <Compile Include="PID\ucPid_1.cs" />
+    <Compile Include="PID\ucPid.xaml.cs">
+      <DependentUpon>ucPid.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="PneumatiсValve\ucPneumatiсValve.xaml.cs">
+      <DependentUpon>ucPneumatiсValve.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Sensor\ucSensor.xaml.cs">
+      <DependentUpon>ucSensor.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="SignalPanel\ucSignalPanel.xaml.cs">
+      <DependentUpon>ucSignalPanel.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="CapacityAllLevele\ucLevel.xaml.cs">
+      <DependentUpon>ucLevel.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ucLine\UserControl_line.xaml.cs">
+      <DependentUpon>UserControl_line.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ucNumberOfUpDown\ucNumberOfUpDown.xaml.cs">
+      <DependentUpon>ucNumberOfUpDown.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UGO\ucUGO_DRIVERControl\PartialClassForDepObject.cs" />
+    <Compile Include="UGO\ucUGO_DRIVERControl\ucUGO_DRIVERControl.xaml.cs">
+      <DependentUpon>ucUGO_DRIVERControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UGO\ucUGO_X3Valve\Ugo3xValve.xaml.cs">
+      <DependentUpon>Ugo3xValve.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UserControlAdmin\ucAllUserSetting.xaml.cs">
+      <DependentUpon>ucAllUserSetting.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UserControlAdmin\ucChangedUser.xaml.cs">
+      <DependentUpon>ucChangedUser.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UserControlAdmin\ucUserControlAdmin.xaml.cs">
+      <DependentUpon>ucUserControlAdmin.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Valve3xElectro\Valve3xElectro.xaml.cs">
+      <DependentUpon>Valve3xElectro.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Valve_1\Valve1.xaml.cs">
+      <DependentUpon>Valve1.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="CounterNumericAnim\_NumericAnimChange.xaml.cs">
+      <DependentUpon>_NumericAnimChange.xaml</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Page Include="AirFans\ucAirFans.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="ArrowPointer\Dictionary_ArrowPointer.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="ArrowPointer\ucArrowPointer.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="ArrowPointer\Simple Styles.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="BackValve\ucBackValve.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Blower\Blower.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="CapacityAllLevele\CapacityAnyAmountLevels.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="CapacityMoreLevels\ucCapacityMoreLevels.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Capacity\DictionaryCapacity.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Capacity\ucCapacity.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Chart1\ucChart.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="CounterNumericAnim\CounterNumericAnim.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="DictionaryLibrarySCADA.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+      <CustomToolNamespace>LibraryMySCADA</CustomToolNamespace>
+    </Page>
+    <Page Include="DirectionPanel\DirectionPanel.xaml">
+      <SubType>Designer</SubType>
+      <Generator>XamlIntelliSenseFileGenerator</Generator>
+    </Page>
+    <Page Include="Flowmeter\FlowMeterControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Flowmeter\ucFlowmeter.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="FlowShutters\FlowShutters.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="FumeValve\FumeValve.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Logics\ANDorOR.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Logics\NOT.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Mixer\ucMixer.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="AirFans\oneFanControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="OneFlow\OneFlow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>XamlIntelliSenseFileGenerator</Generator>
+    </Page>
+    <Page Include="PathAnimation\ucPathAnimation.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="PID\ucPid.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="PneumatiсValve\ucPneumatiсValve.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Sensor\ucSensor.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="SignalPanel\ucSignalPanel.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Simple Styles.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="CapacityAllLevele\ucLevel.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="ucLine\UserControl_line.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="ucNumberOfUpDown\ucNumberOfUpDown.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="UGO\ucUGO_DRIVERControl\ucUGO_DRIVERControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="UGO\ucUGO_X3Valve\Ugo3xValve.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="UserControlAdmin\ucAllUserSetting.xaml">
+      <SubType>Designer</SubType>
+      <Generator>XamlIntelliSenseFileGenerator</Generator>
+    </Page>
+    <Page Include="UserControlAdmin\ucChangedUser.xaml">
+      <SubType>Designer</SubType>
+      <Generator>XamlIntelliSenseFileGenerator</Generator>
+    </Page>
+    <Page Include="UserControlAdmin\ucUserControlAdmin.xaml">
+      <SubType>Designer</SubType>
+      <Generator>XamlIntelliSenseFileGenerator</Generator>
+    </Page>
+    <Page Include="Valve3xElectro\Valve3xElectro.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Valve_1\Valve1.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="CounterNumericAnim\_NumericAnimChange.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+  </ItemGroup>
+  <ItemGroup />
+  <ItemGroup>
+    <Resource Include="PID\close_517bada266da7.png" />
+    <Resource Include="PID\exite.png" />
+    <Resource Include="PID\load.png" />
+    <Resource Include="PID\save.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Mixer\Images\Двигатель.png">
+      <CustomToolNamespace>LibraryMySCADA.Mixer</CustomToolNamespace>
+    </Resource>
+    <Resource Include="Mixer\Images\Лопости.png">
+      <CustomToolNamespace>LibraryMySCADA.Mixer</CustomToolNamespace>
+    </Resource>
+    <Resource Include="Mixer\Images\Шток.png">
+      <CustomToolNamespace>LibraryMySCADA.Mixer</CustomToolNamespace>
+    </Resource>
+    <Resource Include="Mixer\Images\ШтокЛопастей.png">
+      <CustomToolNamespace>LibraryMySCADA.Mixer</CustomToolNamespace>
+    </Resource>
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Mixer\Images\Левая.png" />
+    <Resource Include="Mixer\Images\Правая.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Sensor\Images\датчик1.png">
+      <CustomToolNamespace>LibraryMySCADA.Sensor</CustomToolNamespace>
+    </Resource>
+    <Resource Include="Sensor\Images\датчик2.png">
+      <CustomToolNamespace>LibraryMySCADA.Sensor</CustomToolNamespace>
+    </Resource>
+    <Resource Include="Sensor\Images\датчик3.png">
+      <CustomToolNamespace>LibraryMySCADA.Sensor</CustomToolNamespace>
+    </Resource>
+    <Resource Include="Sensor\Images\датчик4.png">
+      <CustomToolNamespace>LibraryMySCADA.Sensor</CustomToolNamespace>
+    </Resource>
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="PneumatiсValve\Images\задвижка.png">
+      <CustomToolNamespace>LibraryMySCADA.PneumatiсValve</CustomToolNamespace>
+    </Resource>
+    <Resource Include="PneumatiсValve\Images\задвижка1.png">
+      <CustomToolNamespace>LibraryMySCADA.PneumatiсValve</CustomToolNamespace>
+    </Resource>
+    <Resource Include="PneumatiсValve\Images\задвижка2.png">
+      <CustomToolNamespace>LibraryMySCADA.PneumatiсValve</CustomToolNamespace>
+    </Resource>
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Flowmeter\Images\rashodomer.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Valve_1\Images\верхРучки.png" />
+    <Resource Include="Valve_1\Images\низРучки.png" />
+    <Resource Include="Valve_1\Images\Основа.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="FumeValve\Images\клапан паровой гидр ходунок.png" />
+    <Resource Include="FumeValve\Images\клапан паровой гидр.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Valve3xElectro\Images\шток клапана 3х ходового.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Valve3xElectro\Images\клапан 3х ходовой.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="SignalPanel\Images\alarm.png">
+      <CustomToolNamespace>LibraryMySCADA.SignalPanel</CustomToolNamespace>
+    </Resource>
+    <Resource Include="SignalPanel\Images\avto_off_1.png">
+      <CustomToolNamespace>LibraryMySCADA.SignalPanel</CustomToolNamespace>
+    </Resource>
+    <Resource Include="SignalPanel\Images\avto_on_1.png">
+      <CustomToolNamespace>LibraryMySCADA.SignalPanel</CustomToolNamespace>
+    </Resource>
+    <Resource Include="SignalPanel\Images\computerlearning.png">
+      <CustomToolNamespace>LibraryMySCADA.SignalPanel</CustomToolNamespace>
+    </Resource>
+    <Resource Include="SignalPanel\Images\cropped-Letter-M-icon.png">
+      <CustomToolNamespace>LibraryMySCADA.SignalPanel</CustomToolNamespace>
+    </Resource>
+    <Resource Include="SignalPanel\Images\error.png">
+      <CustomToolNamespace>LibraryMySCADA.SignalPanel</CustomToolNamespace>
+    </Resource>
+    <Resource Include="SignalPanel\Images\manual.png">
+      <CustomToolNamespace>LibraryMySCADA.SignalPanel</CustomToolNamespace>
+    </Resource>
+    <Resource Include="SignalPanel\Images\none.png">
+      <CustomToolNamespace>LibraryMySCADA.SignalPanel</CustomToolNamespace>
+    </Resource>
+    <Resource Include="SignalPanel\Images\off.png">
+      <CustomToolNamespace>LibraryMySCADA.SignalPanel</CustomToolNamespace>
+    </Resource>
+    <Resource Include="SignalPanel\Images\ok.png">
+      <CustomToolNamespace>LibraryMySCADA.SignalPanel</CustomToolNamespace>
+    </Resource>
+    <Resource Include="SignalPanel\Images\on.png">
+      <CustomToolNamespace>LibraryMySCADA.SignalPanel</CustomToolNamespace>
+    </Resource>
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Sensor\Images\error.png">
+      <CustomToolNamespace>LibraryMySCADA.Sensor</CustomToolNamespace>
+    </Resource>
+  </ItemGroup>
+  <ItemGroup>
+    <AdditionalFiles Include="..\DependencyValidation1\DependencyValidation1.layerdiagram">
+      <Link>DependencyValidation1.layerdiagram</Link>
+      <Visible>False</Visible>
+    </AdditionalFiles>
+    <None Include="Design\projectGuides.guides" />
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="SignalPanel\Images\light-bulb.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="SignalPanel\Images\Flooding.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="UGO\ucUGO_DRIVERControl\Font-A.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="PID\leto.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="PID\zima.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="UserControlAdmin\Avatars\avatar Admin.png" />
+    <Resource Include="UserControlAdmin\Avatars\avatar1.jpg" />
+    <Resource Include="UserControlAdmin\Avatars\avatar2.png" />
+    <Resource Include="UserControlAdmin\Avatars\avatar4.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="UserControlAdmin\Avatars\GuestAvatar.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="UserControlAdmin\password.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Analyzer Include="..\packages\Microsoft.DependencyValidation.Analyzers.0.9.0\analyzers\dotnet\cs\Microsoft.DependencyValidation.Analyzers.resources.dll" />
+    <Analyzer Include="..\packages\Microsoft.DependencyValidation.Analyzers.0.9.0\analyzers\dotnet\Microsoft.DependencyValidation.Analyzers.dll" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="AirFans\fan-42841_640.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>

@@ -1,0 +1,29 @@
+﻿<UserControl
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:LibraryMySCADA.AirFans"
+             xmlns:LibraryMySCADA="clr-namespace:LibraryMySCADA" x:Class="LibraryMySCADA.AirFans.ucAirFans"
+             mc:Ignorable="d" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Loaded="UserControl_Loaded">
+    <Grid Height="35">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="7"/>
+            <ColumnDefinition Width="Auto" MinWidth="20"/>
+            <ColumnDefinition Width="7"/>
+        </Grid.ColumnDefinitions>
+        <Path Data="M39.999996,0.5 L40.500004,0.5 40.500004,24.031229 39.999996,24.031252 C23.307734,24.031237 10.5,34.936427 10.500004,48.427214 L10.500004,83.098101 10.500004,124.07278 10.500004,148.49999 39.999996,148.56251 40.500004,148.56246 40.500004,158.49999 39.999996,158.49999 31.499998,158.49999 0.5,158.49999 0.5,127.5 0.5,75.499995 0.5,31.499999 C0.5,14.379158 39.999996,0.5 39.999996,0.5 z" Fill="#FFD1D1D1" Stretch="Fill" Stroke="Black" d:LayoutOverrides="LeftMargin, RightMargin, TopMargin, BottomMargin"/>
+        <Path Data="M39.999996,0.5 L40.500004,0.5 40.500004,24.031229 39.999996,24.031252 C23.307734,24.031237 10.5,34.936427 10.500004,48.427214 L10.500004,83.098101 10.500004,124.07278 10.500004,148.49999 39.999996,148.56251 40.500004,148.56246 40.500004,158.49999 39.999996,158.49999 31.499998,158.49999 0.5,158.49999 0.5,127.5 0.5,75.499995 0.5,31.499999 C0.5,14.379158 39.999996,0.5 39.999996,0.5 z" Fill="#FFD1D1D1" Stretch="Fill" Stroke="Black" Grid.Column="2" RenderTransformOrigin="0.5,0.5" Margin="0" d:LayoutOverrides="LeftMargin, RightMargin, TopMargin, BottomMargin">
+            <Path.RenderTransform>
+                <TransformGroup>
+                    <ScaleTransform ScaleY="1" ScaleX="-1"/>
+                    <SkewTransform AngleY="0" AngleX="0"/>
+                    <RotateTransform Angle="0"/>
+                    <TranslateTransform/>
+                </TransformGroup>
+            </Path.RenderTransform>
+        </Path>
+        <StackPanel x:Name="StackForFans" Grid.Column="1" Margin="0,4,0,1" Orientation="Horizontal"/>
+
+    </Grid>
+</UserControl>

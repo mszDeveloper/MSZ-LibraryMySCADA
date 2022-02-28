@@ -1,0 +1,136 @@
+﻿<y:ClassVirtualAdd
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:LibraryMySCADA.FumeValve"
+    xmlns:y="clr-namespace:LibraryMySCADA.Virt"
+             xmlns:Pid="clr-namespace:wpfMszControl.Pid" 
+    xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity" 
+    xmlns:ei="http://schemas.microsoft.com/expression/2010/interactions" 
+    xmlns:Convertors="clr-namespace:LibraryMySCADA.Convertors" 
+    xmlns:LibraryMySCADA="clr-namespace:LibraryMySCADA" 
+    x:Name="userControl" 
+    x:Class="LibraryMySCADA.FumeValve.FumeValve"
+             mc:Ignorable="d" 
+             d:DesignHeight="300" Width="163.19" Loaded="userControl_Loaded">
+    <UserControl.Resources>
+        <Convertors:BoolToVisibleAndCollapsed x:Key="BoolToVisibleAndCollapsed"/>
+        <Storyboard x:Key="OnMouseLeave1">
+            <ColorAnimationUsingKeyFrames Storyboard.TargetProperty="(Shape.Stroke).(SolidColorBrush.Color)" Storyboard.TargetName="rectangle">
+                <EasingColorKeyFrame KeyTime="0" Value="#00000000"/>
+            </ColorAnimationUsingKeyFrames>
+        </Storyboard>
+        <Storyboard x:Key="OnMouseEnter1">
+            <ColorAnimationUsingKeyFrames Storyboard.TargetProperty="(Shape.Stroke).(SolidColorBrush.Color)" Storyboard.TargetName="rectangle">
+                <EasingColorKeyFrame KeyTime="0" Value="Red"/>
+            </ColorAnimationUsingKeyFrames>
+        </Storyboard>
+    </UserControl.Resources>
+    <i:Interaction.Triggers>
+        <i:EventTrigger EventName="MouseLeave" SourceName="border">
+            <ei:GoToStateAction TargetObject="{Binding ElementName=userControl}" StateName="PanelHide"/>
+        </i:EventTrigger>
+    </i:Interaction.Triggers>
+    <UserControl.Triggers>
+        <EventTrigger RoutedEvent="UIElement.MouseEnter">
+            <BeginStoryboard x:Name="OnMouseEnter1_BeginStoryboard" Storyboard="{StaticResource OnMouseEnter1}"/>
+        </EventTrigger>
+        <EventTrigger RoutedEvent="UIElement.MouseLeave">
+            <BeginStoryboard Storyboard="{StaticResource OnMouseLeave1}"/>
+        </EventTrigger>
+    </UserControl.Triggers>
+    <Grid>
+        <VisualStateManager.VisualStateGroups>
+            <VisualStateGroup x:Name="PidVisual">
+                <VisualState x:Name="PidHide">
+                    <Storyboard>
+                        <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Opacity)" Storyboard.TargetName="ucPid">
+                            <EasingDoubleKeyFrame KeyTime="0" Value="0"/>
+                        </DoubleAnimationUsingKeyFrames>
+                        <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Visibility)" Storyboard.TargetName="ucPid">
+                            <DiscreteObjectKeyFrame KeyTime="0" Value="{x:Static Visibility.Hidden}"/>
+                        </ObjectAnimationUsingKeyFrames>
+                    </Storyboard>
+                </VisualState>
+                <VisualState x:Name="PidVisible">
+                    <Storyboard>
+                        <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Visibility)" Storyboard.TargetName="ucPid">
+                            <DiscreteObjectKeyFrame KeyTime="0" Value="{x:Static Visibility.Visible}"/>
+                        </ObjectAnimationUsingKeyFrames>
+                        <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Opacity)" Storyboard.TargetName="canvas">
+                            <EasingDoubleKeyFrame KeyTime="0" Value="1"/>
+                        </DoubleAnimationUsingKeyFrames>
+                        <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Opacity)" Storyboard.TargetName="ucPid">
+                            <EasingDoubleKeyFrame KeyTime="0" Value="1"/>
+                        </DoubleAnimationUsingKeyFrames>
+                    </Storyboard>
+                </VisualState>
+            </VisualStateGroup>
+            <VisualStateGroup x:Name="PanelVisual">
+                <VisualState x:Name="PanelHide">
+                    <Storyboard>
+                        <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Visibility)" Storyboard.TargetName="canvas1">
+                            <DiscreteObjectKeyFrame KeyTime="0">
+                                <DiscreteObjectKeyFrame.Value>
+                                    <Visibility>Collapsed</Visibility>
+                                </DiscreteObjectKeyFrame.Value>
+                            </DiscreteObjectKeyFrame>
+                        </ObjectAnimationUsingKeyFrames>
+                    </Storyboard>
+                </VisualState>
+                <VisualState x:Name="PanelVisible">
+                    <Storyboard>
+                        <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Visibility)" Storyboard.TargetName="canvas1">
+                            <DiscreteObjectKeyFrame KeyTime="0" Value="{x:Static Visibility.Visible}"/>
+                        </ObjectAnimationUsingKeyFrames>
+                    </Storyboard>
+                </VisualState>
+            </VisualStateGroup>
+        </VisualStateManager.VisualStateGroups>
+        <Viewbox Stretch="Fill">
+            <Grid x:Name="grid" Height="300" Width="163.19">
+                <i:Interaction.Triggers>
+                    <i:EventTrigger SourceObject="{Binding ElementName=grid}" SourceName="grid" EventName="PreviewMouseLeftButtonUp">
+                        <ei:GoToStateAction StateName="PanelVisible" TargetObject="{Binding ElementName=userControl}"/>
+                    </i:EventTrigger>
+                </i:Interaction.Triggers>
+                <Grid.RowDefinitions>
+                    <RowDefinition/>
+                </Grid.RowDefinitions>
+                <Image x:Name="клапан_паровой" Source="Images/клапан паровой гидр.png"/>
+                <Image x:Name="Hodunok" Margin="58,196,0,0" Source="Images/клапан паровой гидр ходунок.png" HorizontalAlignment="Left" Width="56.5" Height="21" VerticalAlignment="Top"/>
+                <Rectangle x:Name="rectangle" Stroke="#00000000"/>
+
+            </Grid>
+        </Viewbox>
+        <Canvas x:Name="canvas1" Margin="0,2,-60.81,221" Visibility="Collapsed">
+            <Border x:Name="border" BorderBrush="Black" BorderThickness="1" HorizontalAlignment="Left" Height="86.333" VerticalAlignment="Top" Width="224" CornerRadius="5" Background="#FFC3C3C3">
+                <i:Interaction.Behaviors>
+                    <ei:MouseDragElementBehavior/>
+                </i:Interaction.Behaviors>
+                <Grid Margin="0,0,-2,-2">
+                    <Label Content="0" HorizontalAlignment="Left" Height="22.021" Margin="10,-2.49,0,0" VerticalAlignment="Top" Width="16.261" Padding="5,2,5,5"/>
+                    <Label Content="100" Height="21.844" Margin="0,-2.313,10,0" VerticalAlignment="Top" HorizontalAlignment="Right" Width="29.7" Padding="5,2,5,5"/>
+                    <Button x:Name="buttonOpenValve" Content="Открыть" Margin="19.333,50.01,152.421,16.167" Click="buttonOpenValve_Click" Visibility="{Binding Visibility, ElementName=buttonCloseValve}"/>
+                    <Button x:Name="buttonCloseValve" Content="Закрыть" Margin="76.579,50.01,95.175,16.167" Click="buttonCloseValve_Click"/>
+                    <Button x:Name="buttonPID" Content="ПИД" Margin="184.8,50.01,8.533,16.167" Click="buttonPID_Click" Visibility="{Binding isVisiblePIDbutton, Converter={StaticResource BoolToVisibleAndCollapsed}, ElementName=userControl}"/>
+                    <Slider x:Name="slider" Maximum="100" SmallChange="1" ToolTip="Процент открытия в ручном и авто режиме без ПИД регулятора" TickPlacement="TopLeft" Margin="10,19.531,10,33.823" Interval="1" AutoToolTipPlacement="TopLeft" LargeChange="10" IsSnapToTickEnabled="True" ValueChanged="slider_ValueChanged"/>
+                    <Label Content="{Binding Value, ElementName=slider}" HorizontalAlignment="Left" Height="19.531" Margin="90.5,0,0,0" VerticalAlignment="Top" Width="35.492" Padding="5,0,5,5" VerticalContentAlignment="Center" HorizontalContentAlignment="Center"/>
+                    <LibraryMySCADA:ucNumberOfUpDown x:Name="numericOsPid" HorizontalAlignment="Left" Height="15.177" Margin="141.134,52.093,0,0" VerticalAlignment="Top" Width="40.666" Max="100" Step="1" Visibility="{Binding Visibility, ElementName=buttonPID}" Value_Changed="ucNumberOfUpDown_Value_Changed" Value="{Binding setTProduct, ElementName=userControl, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+                </Grid>
+            </Border>
+        </Canvas>
+        <Canvas x:Name="canvas" Margin="18.19,92,-38,24.667">
+            <i:Interaction.Triggers>
+                <i:EventTrigger EventName="Click" SourceName="buttonPID" SourceObject="{Binding ElementName=buttonPID}">
+                    <ei:GoToStateAction StateName="PidVisible"/>
+                </i:EventTrigger>
+                <i:EventTrigger EventName="Hide_Event" SourceName="ucPid" SourceObject="{Binding ElementName=ucPid}">
+                    <ei:GoToStateAction StateName="PidHide"/>
+                </i:EventTrigger>
+            </i:Interaction.Triggers>
+            <Pid:ucPid x:Name="ucPid" HorizontalAlignment="Left" Height="221.333" VerticalAlignment="Top" Width="205.5" Visibility="Hidden" Opacity="0" PidValue_Changed="ucPid_PidValue_Changed"/>
+        </Canvas>
+    </Grid>
+</y:ClassVirtualAdd>

@@ -1,0 +1,90 @@
+﻿<UserControl
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:LibraryMySCADA.PneumatiсValve"
+             xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity" xmlns:ei="http://schemas.microsoft.com/expression/2010/interactions"
+             x:Name="userControl" x:Class="LibraryMySCADA.PneumatiсValve.ucPneumatiсValve"
+             mc:Ignorable="d" 
+             d:DesignHeight="300" Width="189.509" UseLayoutRounding="True" Loaded="userControl_Loaded">
+    <i:Interaction.Triggers>
+        <ei:DataTrigger Binding="{Binding isOpen, ElementName=userControl, Mode=OneWay}" Value="true">
+            <ei:GoToStateAction TargetObject="{Binding ElementName=userControl}" StateName="ValveOpen" IsEnabled="False"/>
+        </ei:DataTrigger>
+        <ei:DataTrigger Binding="{Binding isOpen, ElementName=userControl, Mode=OneWay}" Value="false">
+            <ei:GoToStateAction TargetObject="{Binding ElementName=userControl}" StateName="ValveClose" IsEnabled="False"/>
+        </ei:DataTrigger>
+    </i:Interaction.Triggers>
+    <Viewbox Stretch="Fill">
+        <VisualStateManager.VisualStateGroups>
+            <VisualStateGroup x:Name="Valve">
+                <VisualStateGroup.Transitions>
+                    <VisualTransition From="ValveOpen" GeneratedDuration="0:0:1" To="ValveClose"/>
+                </VisualStateGroup.Transitions>
+                <VisualState x:Name="ValveClose"/>
+                <VisualState x:Name="ValveOpen">
+                    <Storyboard AutoReverse="False">
+                        <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[0].(ScaleTransform.ScaleX)" Storyboard.TargetName="right">
+                            <EasingDoubleKeyFrame KeyTime="0:0:1" Value="0.011"/>
+                        </DoubleAnimationUsingKeyFrames>
+                        <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.X)" Storyboard.TargetName="right">
+                            <EasingDoubleKeyFrame KeyTime="0:0:1" Value="-25.666"/>
+                        </DoubleAnimationUsingKeyFrames>
+                        <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[0].(ScaleTransform.ScaleX)" Storyboard.TargetName="left">
+                            <EasingDoubleKeyFrame KeyTime="0:0:1" Value="0.003"/>
+                        </DoubleAnimationUsingKeyFrames>
+                        <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.X)" Storyboard.TargetName="left">
+                            <EasingDoubleKeyFrame KeyTime="0:0:1" Value="27.001"/>
+                        </DoubleAnimationUsingKeyFrames>
+                        <ColorAnimationUsingKeyFrames Storyboard.TargetProperty="(Shape.Fill).(SolidColorBrush.Color)" Storyboard.TargetName="rectangle">
+                            <EasingColorKeyFrame KeyTime="0:0:1" Value="Lime"/>
+                        </ColorAnimationUsingKeyFrames>
+                    </Storyboard>
+                </VisualState>
+            </VisualStateGroup>
+        </VisualStateManager.VisualStateGroups>
+        <i:Interaction.Behaviors>
+            <ei:DataStateBehavior Binding="{Binding isOpen, ElementName=userControl}" Value="true" TrueState="ValveOpen" FalseState="ValveClose"/>
+        </i:Interaction.Behaviors>
+        <Border Height="300" Width="189.509" BorderThickness="1">
+            <Grid>
+                <Image Source="Images/задвижка.png"/>
+                <Image x:Name="centr_Copy" Margin="93.906,172.167,0,0" Source="Images/задвижка2.png" RenderTransformOrigin="0.5,0.5" HorizontalAlignment="Left" Width="14" Height="93" VerticalAlignment="Top">
+                    <Image.RenderTransform>
+                        <TransformGroup>
+                            <ScaleTransform ScaleX="-1"/>
+                            <SkewTransform/>
+                            <RotateTransform/>
+                            <TranslateTransform/>
+                        </TransformGroup>
+                    </Image.RenderTransform>
+                </Image>
+
+                <Image x:Name="left" Margin="46.667,173.417,0,0" Source="Images/задвижка1.png" RenderTransformOrigin="0.5,0.5" HorizontalAlignment="Left" Width="45.5" Height="93" VerticalAlignment="Top">
+                    <Image.RenderTransform>
+                        <TransformGroup>
+                            <ScaleTransform/>
+                            <SkewTransform/>
+                            <RotateTransform/>
+                            <TranslateTransform/>
+                        </TransformGroup>
+                    </Image.RenderTransform>
+                </Image>
+                <Image x:Name="centr" Margin="83.167,172.167,0,0" Source="Images/задвижка2.png" HorizontalAlignment="Left" Width="15" Height="93" VerticalAlignment="Top"/>
+                <Image x:Name="right" Margin="99.163,173.333,0,0" Source="Images/задвижка1.png" RenderTransformOrigin="0.5,0.5" HorizontalAlignment="Left" Width="45.5" Height="92.502" VerticalAlignment="Top">
+                    <Image.RenderTransform>
+                        <TransformGroup>
+                            <ScaleTransform ScaleX="-1"/>
+                            <SkewTransform/>
+                            <RotateTransform/>
+                            <TranslateTransform/>
+                        </TransformGroup>
+                    </Image.RenderTransform>
+                </Image>
+                <Rectangle x:Name="rectangle" Fill="Red" Margin="75,48.334,0,0" HorizontalAlignment="Left" Width="43.332" Height="25.333" VerticalAlignment="Top"/>
+
+            </Grid>
+        </Border>
+    </Viewbox>
+</UserControl>

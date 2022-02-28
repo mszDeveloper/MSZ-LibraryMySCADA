@@ -1,0 +1,98 @@
+﻿<y:ClassVirtualAdd
+            xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+            xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+            xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+            xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+            xmlns:local="clr-namespace:LibraryMySCADA.OneFlow"
+            xmlns:y="clr-namespace:LibraryMySCADA.Virt"
+            xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity" 
+    xmlns:ei="http://schemas.microsoft.com/expression/2010/interactions" 
+    x:Name="classVirtualAdd" 
+            x:Class="LibraryMySCADA.OneFlow.OneFlow"
+            mc:Ignorable="d" Height="320" Width="320">
+    <y:ClassVirtualAdd.Resources>
+        <Storyboard x:Key="Anim" RepeatBehavior="Forever" Duration="{Binding Speed, ElementName=classVirtualAdd, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}">
+            <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="(ScrollViewer.VerticalScrollBarVisibility)" Storyboard.TargetName="pathFlow1">
+                <DiscreteObjectKeyFrame KeyTime="0" Value="{x:Static ScrollBarVisibility.Disabled}"/>
+            </ObjectAnimationUsingKeyFrames>
+            <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Visibility)" Storyboard.TargetName="pathFlow1">
+                <DiscreteObjectKeyFrame KeyTime="0" Value="{x:Static Visibility.Visible}"/>
+            </ObjectAnimationUsingKeyFrames>
+            <PointAnimationUsingKeyFrames Storyboard.TargetProperty="(Path.Data).(PathGeometry.Figures)[0].(PathFigure.Segments)[0].(LineSegment.Point)" Storyboard.TargetName="pathFlow1">
+                <SplinePointKeyFrame KeyTime="0" Value="22,22"/>
+                <EasingPointKeyFrame KeyTime="0:0:0.45" Value="22,12"/>
+                <EasingPointKeyFrame KeyTime="0:0:0.9" Value="22,2"/>
+                <EasingPointKeyFrame KeyTime="0:0:1.35" Value="22,12"/>
+                <EasingPointKeyFrame KeyTime="0:0:1.8" Value="22,22"/>
+            </PointAnimationUsingKeyFrames>
+            <PointAnimationUsingKeyFrames Storyboard.TargetProperty="(Path.Data).(PathGeometry.Figures)[0].(PathFigure.Segments)[2].(LineSegment.Point)" Storyboard.TargetName="pathFlow1">
+                <SplinePointKeyFrame KeyTime="0" Value="62,2"/>
+                <EasingPointKeyFrame KeyTime="0:0:0.45" Value="62,12"/>
+                <EasingPointKeyFrame KeyTime="0:0:0.9" Value="62,22"/>
+                <EasingPointKeyFrame KeyTime="0:0:1.35" Value="62,12"/>
+                <EasingPointKeyFrame KeyTime="0:0:1.8" Value="62,2.00000000000003"/>
+            </PointAnimationUsingKeyFrames>
+            <PointAnimationUsingKeyFrames Storyboard.TargetProperty="(Path.Data).(PathGeometry.Figures)[0].(PathFigure.Segments)[4].(LineSegment.Point)" Storyboard.TargetName="pathFlow1">
+                <SplinePointKeyFrame KeyTime="0" Value="102,22"/>
+                <EasingPointKeyFrame KeyTime="0:0:0.45" Value="102,12"/>
+                <EasingPointKeyFrame KeyTime="0:0:0.9" Value="103,2"/>
+                <EasingPointKeyFrame KeyTime="0:0:1.35" Value="102,12"/>
+                <EasingPointKeyFrame KeyTime="0:0:1.8" Value="102,22"/>
+            </PointAnimationUsingKeyFrames>
+            <PointAnimationUsingKeyFrames Storyboard.TargetProperty="(Path.Data).(PathGeometry.Figures)[0].(PathFigure.Segments)[3].(LineSegment.Point)" Storyboard.TargetName="pathFlow1">
+                <SplinePointKeyFrame KeyTime="0" Value="82,12"/>
+                <EasingPointKeyFrame KeyTime="0:0:0.45" Value="82,22"/>
+                <EasingPointKeyFrame KeyTime="0:0:0.9" Value="82,12"/>
+                <EasingPointKeyFrame KeyTime="0:0:1.35" Value="82,2"/>
+                <EasingPointKeyFrame KeyTime="0:0:1.8" Value="82,12"/>
+            </PointAnimationUsingKeyFrames>
+            <PointAnimationUsingKeyFrames Storyboard.TargetProperty="(Path.Data).(PathGeometry.Figures)[0].(PathFigure.Segments)[1].(LineSegment.Point)" Storyboard.TargetName="pathFlow1">
+                <SplinePointKeyFrame KeyTime="0" Value="41.9997050553131,12.1104851"/>
+                <EasingPointKeyFrame KeyTime="0:0:0.45" Value="41.9999999999998,2"/>
+                <EasingPointKeyFrame KeyTime="0:0:0.9" Value="42,12"/>
+                <EasingPointKeyFrame KeyTime="0:0:1.35" Value="42,22"/>
+                <EasingPointKeyFrame KeyTime="0:0:1.8" Value="42,12"/>
+            </PointAnimationUsingKeyFrames>
+            <PointAnimationUsingKeyFrames Storyboard.TargetProperty="(Path.Data).(PathGeometry.Figures)[0].(PathFigure.Segments)[5].(LineSegment.Point)" Storyboard.TargetName="pathFlow1">
+                <SplinePointKeyFrame KeyTime="0" Value="122.333010055313,12.3333078"/>
+                <EasingPointKeyFrame KeyTime="0:0:0.45" Value="122,2"/>
+                <EasingPointKeyFrame KeyTime="0:0:0.9" Value="122,12"/>
+                <EasingPointKeyFrame KeyTime="0:0:1.35" Value="122,22"/>
+                <EasingPointKeyFrame KeyTime="0:0:1.8" Value="122,12"/>
+            </PointAnimationUsingKeyFrames>
+            <PointAnimationUsingKeyFrames Storyboard.TargetProperty="(Path.Data).(PathGeometry.Figures)[0].(PathFigure.StartPoint)" Storyboard.TargetName="pathFlow1">
+                <EasingPointKeyFrame KeyTime="0:0:0.45" Value="2,22"/>
+                <EasingPointKeyFrame KeyTime="0:0:0.9" Value="2,12"/>
+                <EasingPointKeyFrame KeyTime="0:0:1.35" Value="2,2"/>
+                <EasingPointKeyFrame KeyTime="0:0:1.8" Value="2,12"/>
+            </PointAnimationUsingKeyFrames>
+        </Storyboard>
+
+    </y:ClassVirtualAdd.Resources>
+    
+    
+    
+    <Viewbox Stretch="Fill">
+        <VisualStateManager.VisualStateGroups>
+            <VisualStateGroup x:Name="VisualStateGroup">
+                <VisualState x:Name="AnimOn">
+                 </VisualState>
+                <VisualState x:Name="AnimOff"/>
+            </VisualStateGroup>
+        </VisualStateManager.VisualStateGroups>
+        <Path x:Name="pathFlow1" HorizontalAlignment="Left" Height="24" Stroke="{Binding BorderBrush, ElementName=classVirtualAdd}" StrokeThickness="4" VerticalAlignment="Top" Width="164" Visibility="Collapsed">
+            <Path.Data>
+                <PathGeometry>
+                    <PathFigure StartPoint="2.16700005531311,12">
+                        <LineSegment Point="22.2505420553131,12.0557063"/>
+                        <LineSegment Point="41.9997050553131,12.1104851"/>
+                        <LineSegment Point="61.7495420553131,12.1652658"/>
+                        <LineSegment Point="82.0000790553131,12.2214353"/>
+                        <LineSegment Point="102.499230055313,12.2782943"/>
+                        <LineSegment Point="122.333010055313,12.3333078"/>
+                    </PathFigure>
+                </PathGeometry>
+            </Path.Data>
+        </Path>
+    </Viewbox>
+</y:ClassVirtualAdd>

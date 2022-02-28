@@ -1,0 +1,228 @@
+﻿<UserControl
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:wpfLibMszControl.ArrowPointer"
+             xmlns:System="clr-namespace:System;assembly=mscorlib" 
+            xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity" 
+            xmlns:pi="http://schemas.microsoft.com/prototyping/2010/interactivity" 
+            xmlns:ei="http://schemas.microsoft.com/expression/2010/interactions" 
+            xmlns:Convertors="clr-namespace:LibraryMySCADA.Convertors" 
+            x:Name="ArrowPointer" 
+            x:Class="wpfLibMszControl.ArrowPointer.ucArrowPointer"
+            
+             mc:Ignorable="d" Height="147" Width="300" Loaded="ArrowPointer_Loaded" Foreground="#FFC1C1C1"
+             >
+
+    <UserControl.Resources>
+
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="Dictionary_ArrowPointer.xaml" />
+                <ResourceDictionary Source="Simple Styles.xaml"/>
+            </ResourceDictionary.MergedDictionaries>
+            <Convertors:DoubleRounding x:Key="DoubleRounding"/>
+            <BooleanToVisibilityConverter x:Key="BooleanToVisibilityConverter"/>
+
+            <local:ValueToAngleArrow  x:Key="ValueToAngleArrow"/>
+
+            <Style x:Key="LabelStyle_Value" TargetType="{x:Type Label}">
+                <Setter Property="Foreground" Value="{DynamicResource {x:Static SystemColors.ControlTextBrushKey}}"/>
+                <Setter Property="Background" Value="Transparent"/>
+                <Setter Property="Padding" Value="5"/>
+                <Setter Property="HorizontalContentAlignment" Value="Left"/>
+                <Setter Property="VerticalContentAlignment" Value="Top"/>
+                <Setter Property="Template">
+                    <Setter.Value>
+                        <ControlTemplate TargetType="{x:Type Label}">
+                            <Border BorderBrush="{TemplateBinding BorderBrush}" Background="{TemplateBinding Background}" SnapsToDevicePixels="True" BorderThickness="1" CornerRadius="2">
+                                <Viewbox HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" Stretch="Uniform" VerticalAlignment="{TemplateBinding VerticalContentAlignment}">
+                                    <ContentPresenter ContentTemplate="{TemplateBinding ContentTemplate}" Content="{TemplateBinding Content}" ContentStringFormat="{TemplateBinding ContentStringFormat}" RecognizesAccessKey="True" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}"/>
+                                </Viewbox>
+                            </Border>
+                            <ControlTemplate.Triggers>
+                                <Trigger Property="IsEnabled" Value="False">
+                                    <Setter Property="Foreground" Value="{DynamicResource {x:Static SystemColors.GrayTextBrushKey}}"/>
+                                </Trigger>
+                            </ControlTemplate.Triggers>
+                        </ControlTemplate>
+                    </Setter.Value>
+                </Setter>
+            </Style>
+            <Storyboard x:Key="OnClick_Min">
+                <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Visibility)" Storyboard.TargetName="textBoxMax">
+                    <DiscreteObjectKeyFrame KeyTime="0" Value="{x:Static Visibility.Collapsed}"/>
+                </ObjectAnimationUsingKeyFrames>
+                <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Visibility)" Storyboard.TargetName="textBoxMin">
+                    <DiscreteObjectKeyFrame KeyTime="0" Value="{x:Static Visibility.Visible}"/>
+                </ObjectAnimationUsingKeyFrames>
+            </Storyboard>
+            <Storyboard x:Key="Hide_TextBox">
+                <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Visibility)" Storyboard.TargetName="textBoxMin">
+                    <DiscreteObjectKeyFrame KeyTime="0" Value="{x:Static Visibility.Collapsed}"/>
+                </ObjectAnimationUsingKeyFrames>
+                <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Visibility)" Storyboard.TargetName="textBoxMax">
+                    <DiscreteObjectKeyFrame KeyTime="0" Value="{x:Static Visibility.Collapsed}"/>
+                </ObjectAnimationUsingKeyFrames>
+            </Storyboard>
+            <Storyboard x:Key="OnClick_Max">
+                <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Visibility)" Storyboard.TargetName="textBoxMax">
+                    <DiscreteObjectKeyFrame KeyTime="0" Value="{x:Static Visibility.Visible}"/>
+                </ObjectAnimationUsingKeyFrames>
+                <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Visibility)" Storyboard.TargetName="textBoxMin">
+                    <DiscreteObjectKeyFrame KeyTime="0" Value="{x:Static Visibility.Collapsed}"/>
+                </ObjectAnimationUsingKeyFrames>
+            </Storyboard>
+
+        </ResourceDictionary>
+    </UserControl.Resources>
+    <UserControl.Triggers>
+        <EventTrigger RoutedEvent="ButtonBase.Click" SourceName="button_Min">
+            <BeginStoryboard x:Name="OnClick_Min_BeginStoryboard" Storyboard="{StaticResource OnClick_Min}"/>
+        </EventTrigger>
+        <EventTrigger RoutedEvent="Control.MouseDoubleClick">
+            <BeginStoryboard x:Name="Hide_TextBox_BeginStoryboard" Storyboard="{StaticResource Hide_TextBox}"/>
+        </EventTrigger>
+        <EventTrigger RoutedEvent="FrameworkElement.Loaded">
+            <BeginStoryboard x:Name="Hide_TextBox_BeginStoryboard1" Storyboard="{StaticResource Hide_TextBox}"/>
+        </EventTrigger>
+        <EventTrigger RoutedEvent="ButtonBase.Click" SourceName="button_Max">
+            <BeginStoryboard x:Name="OnClick_Max_BeginStoryboard" Storyboard="{StaticResource OnClick_Max}"/>
+        </EventTrigger>
+    </UserControl.Triggers>
+
+
+    <i:Interaction.Triggers>
+        <i:EventTrigger/>
+        <i:EventTrigger>
+            <ei:GoToStateAction TargetObject="{Binding ElementName=ArrowPointer}" StateName="VisualState_SetsVal_Hiden" UseTransitions="False"/>
+        </i:EventTrigger>
+    </i:Interaction.Triggers>
+
+
+    <Viewbox x:Name="viewbox" Margin="0,0,-1,-1" d:LayoutOverrides="Width, Height">
+        <VisualStateManager.VisualStateGroups>
+            <VisualStateGroup x:Name="VisualStateGroup">
+                <VisualState x:Name="VisualState_VisualButtonOnly">
+                    <Storyboard>
+                        <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Visibility)" Storyboard.TargetName="textBoxMin">
+                            <DiscreteObjectKeyFrame KeyTime="0" Value="{x:Static Visibility.Collapsed}"/>
+                        </ObjectAnimationUsingKeyFrames>
+                        <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Visibility)" Storyboard.TargetName="textBoxMax">
+                            <DiscreteObjectKeyFrame KeyTime="0" Value="{x:Static Visibility.Collapsed}"/>
+                        </ObjectAnimationUsingKeyFrames>
+                    </Storyboard>
+                </VisualState>
+                <VisualState x:Name="VisualState_VisualButtonAndTextbox">
+                    <Storyboard/>
+                </VisualState>
+            </VisualStateGroup>
+            <VisualStateGroup x:Name="VisualStateGroup_SetsValue">
+                <VisualStateGroup.Transitions>
+                    <VisualTransition GeneratedDuration="0"/>
+                </VisualStateGroup.Transitions>
+                <VisualState x:Name="VisualState_SetsVal_Visible">
+                    <Storyboard>
+                        <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Visibility)" Storyboard.TargetName="border1">
+                            <DiscreteObjectKeyFrame KeyTime="0:0:0.4" Value="{x:Static Visibility.Visible}"/>
+                        </ObjectAnimationUsingKeyFrames>
+                        <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Opacity)" Storyboard.TargetName="border1">
+                            <EasingDoubleKeyFrame KeyTime="0:0:0.4" Value="0"/>
+                            <EasingDoubleKeyFrame KeyTime="0:0:0.8" Value="1"/>
+                        </DoubleAnimationUsingKeyFrames>
+                    </Storyboard>
+                </VisualState>
+                <VisualState x:Name="VisualState_SetsVal_Hiden">
+                    <Storyboard>
+                        <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Visibility)" Storyboard.TargetName="border1">
+                            <DiscreteObjectKeyFrame KeyTime="0:0:0.2" Value="{x:Static Visibility.Collapsed}"/>
+                        </ObjectAnimationUsingKeyFrames>
+                        <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Opacity)" Storyboard.TargetName="border1">
+                            <EasingDoubleKeyFrame KeyTime="0:0:0.2" Value="0"/>
+                        </DoubleAnimationUsingKeyFrames>
+                    </Storyboard>
+                </VisualState>
+            </VisualStateGroup>
+        </VisualStateManager.VisualStateGroups>
+
+
+        <Grid Height="148" Width="301">
+            <i:Interaction.Triggers>
+                <i:EventTrigger EventName="MouseEnter" SourceName="rectangle">
+                    <i:Interaction.Behaviors>
+                        <ei:ConditionBehavior>
+                            <ei:ConditionalExpression>
+                                <ei:ComparisonCondition LeftOperand="{Binding useSettingValue, ElementName=ArrowPointer}" RightOperand="True"/>
+                            </ei:ConditionalExpression>
+                        </ei:ConditionBehavior>
+                    </i:Interaction.Behaviors>
+                    <ei:GoToStateAction StateName="VisualState_SetsVal_Visible"/>
+                </i:EventTrigger>
+                <i:EventTrigger EventName="MouseLeave" SourceName="viewbox">
+                    <ei:GoToStateAction StateName="VisualState_SetsVal_Hiden"/>
+                </i:EventTrigger>
+            </i:Interaction.Triggers>
+
+
+            <Border x:Name="border" BorderThickness="2" BorderBrush="#FF7E6969" CornerRadius="4" Background="#FF9C9999">
+                <Grid x:Name="grid">
+
+                    <Rectangle x:Name="rectangle" Fill="#FFE8E5E5" Margin="5,5,5,35" Stroke="#FF666666" StrokeThickness="2"/>
+                    <Path Data="M-2.6101218E-53,43.059969 C95.351963,-15.82563 194.58636,-12.699088 277.29167,42.559487 L274.875,45.89282 C190.2077,-9.0089934 95.76549,-11.667581 2.375,46.62247 z" Margin="9.625,24.44,10.083,0"  StrokeDashArray="1 0" SnapsToDevicePixels="True" StrokeEndLineCap="Square" StrokeLineJoin="Round" StrokeStartLineCap="Square" Fill="{Binding LinebBrush, ElementName=ArrowPointer}" Height="46.623" VerticalAlignment="Top"/>
+                    <Path x:Name="___Path_shtrih1_" Data="M5.2912663,45.657676 C87.83477,-9.5303849 193.56096,-9.2670542 273.70872,45.657679" Height="50.023" Margin="9.5,19.477,8.5,0" VerticalAlignment="Top" StrokeThickness="11" Stroke="Black" StrokeDashArray="0.2 2.45" StrokeDashOffset="0.5"/>
+                    <Path x:Name="___Path_shtrih2" Data="M3.5,45.501437 C88.714112,-10.632632 200.01793,-10.368019 277.5,45.50098" Margin="8,22.998,8,0" StrokeThickness="7" Stroke="Black" StrokeDashArray="0.1 0.5" StrokeMiterLimit="1" Height="49.002" VerticalAlignment="Top"/>
+                    <Path x:Name="___Path_line_" Data="M0.49999986,41.792355 C83.043504,-13.395705 188.76969,-13.132375 268.91745,41.792358" Height="42.292" Margin="14.291,29.149,13.291,0" StrokeStartLineCap="Round" StrokeEndLineCap="Round" VerticalAlignment="Top" Stroke="Black" StrokeDashArray="1 0" StrokeDashOffset="1"/>
+                    <Label x:Name="label1" Height="22" Margin="127.332,0,135.665,43.917" VerticalAlignment="Bottom" Style="{DynamicResource LabelStyleMaxMin}" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontWeight="Bold" FontFamily="Sitka Banner" SnapsToDevicePixels="True" HorizontalAlignment="Center" Content="{Binding ValuePr, ElementName=ArrowPointer}"/>
+                    <Label x:Name="label2_Copy" Content="{Binding MaxValue, ElementName=ArrowPointer}" Margin="0,0,13.391,42.535" FontSize="21.333" VerticalAlignment="Bottom" Height="28.068" Style="{DynamicResource LabelStyle1}" Padding="0" HorizontalAlignment="Right" Width="45.025" HorizontalContentAlignment="Right"/>
+                    <Label x:Name="label2_Copy1" Content="{Binding MinValue, ElementName=ArrowPointer}" Margin="16.196,0,0,42.535" FontSize="21.333" VerticalAlignment="Bottom" Height="28.068" Style="{DynamicResource LabelStyle1}" Padding="0" HorizontalAlignment="Left" Width="49.554"/>
+                    <Path x:Name="___Strelka_" Data="M147.50011,126.03091 L148.50042,126.03091 149.58353,25.416331 152.50166,27.541042 147.50011,9.3742764 142.52957,27.593087 145.43697,25.53058 146.4998,126.01542 z" Fill="#FF4D4D4D" Margin="139.832,12.877,140.199,41.788" Stretch="Fill" Stroke="#FFD4D4D4" RenderTransformOrigin="0.506,2.144">
+
+                        <Path.RenderTransform>
+                            <TransformGroup>
+                                <ScaleTransform/>
+                                <SkewTransform/>
+                                <RotateTransform>
+                                    <RotateTransform.Angle>
+                                        <MultiBinding Converter="{StaticResource ValueToAngleArrow}">
+                                            <Binding Path="Value" ElementName="ArrowPointer" />
+                                            <Binding Path="MaxValue" ElementName="ArrowPointer" />
+                                            <Binding Path="MinValue" ElementName="ArrowPointer" />
+                                        </MultiBinding>
+                                    </RotateTransform.Angle>
+                                </RotateTransform>
+                                <TranslateTransform/>
+                            </TransformGroup>
+                        </Path.RenderTransform>
+                        <Path.Effect>
+                            <DropShadowEffect/>
+                        </Path.Effect>
+
+                    </Path>
+                    <Rectangle Height="28.667" Margin="3.333,0,5.667,8.667" StrokeThickness="2" VerticalAlignment="Bottom" Fill="{Binding Background, ElementName=border}"/>
+                    <Path x:Name="path" Data="M145.00351,6.0000018 C94.074928,5.9999999 46.611721,20.738922 6.7006078,46.157102 L3.9999988,47.922922 3.9999988,104 288,104 288,49.226049 283.30643,46.157102 C243.39529,20.738922 195.9321,5.9999999 145.00351,6.0000018 z M0.5,0.5 L291.5,0.5 291.5,109.5 0.5,109.5 z" Fill="{Binding Foreground, ElementName=ArrowPointer}" Margin="2,2,2,35" Stretch="Fill" Stroke="#FF666666" StrokeThickness="2"/>
+                    <Label x:Name="label2" Content="{Binding Value, ConverterParameter=1, Converter={StaticResource DoubleRounding}, ElementName=ArrowPointer}" Margin="103.332,0,113.667,1.333" FontSize="32" VerticalAlignment="Bottom" Height="40.47" Style="{DynamicResource LabelStyle1}" Padding="0" FontWeight="Bold" HorizontalAlignment="Center"/>
+                    <Button x:Name="button_Min" Content="Min" HorizontalAlignment="Left" Height="28" Margin="2,0,0,3.5" Style="{DynamicResource SimpleButton}" VerticalAlignment="Bottom" Width="60.75" FontSize="21.333" Padding="1,-1,1,1" Visibility="{Binding visualMinMax, Converter={StaticResource BooleanToVisibilityConverter}, ElementName=ArrowPointer}"/>
+                    <Button x:FieldModifier="public" x:Name="button_Max" Content="Max" HorizontalAlignment="Right" Height="28" Margin="0,0,2,3.5" Style="{DynamicResource SimpleButton}" VerticalAlignment="Bottom" Width="60.75" FontSize="21.333" Padding="1,-1,1,1" Visibility="{Binding visualMinMax, Converter={StaticResource BooleanToVisibilityConverter}, ElementName=ArrowPointer}"/>
+                    <TextBox x:Name="textBoxMin" Height="25" Margin="0,0,174.25,5" Style="{DynamicResource SimpleTextBox}" TextWrapping="Wrap" Text="{Binding MinValue, FallbackValue=0, Mode=TwoWay, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type local:ucArrowPointer}}, UpdateSourceTrigger=PropertyChanged, ValidatesOnExceptions=True}" VerticalAlignment="Bottom" HorizontalAlignment="Right" Width="60" UndoLimit="1" Background="#FFC58080" Visibility="{Binding visualMinMax, Converter={StaticResource BooleanToVisibilityConverter}, ElementName=ArrowPointer}"/>
+                    <TextBox x:Name="textBoxMax" Height="25" Margin="0,0,62.75,5" Style="{DynamicResource SimpleTextBox}" TextWrapping="Wrap" Text="{Binding MaxValue, Mode=TwoWay, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type local:ucArrowPointer}}, UpdateSourceTrigger=PropertyChanged}" VerticalAlignment="Bottom" HorizontalAlignment="Right" Width="60" UndoLimit="1" Visibility="{Binding visualMinMax, Converter={StaticResource BooleanToVisibilityConverter}, ElementName=ArrowPointer}"/>
+                </Grid>
+            </Border>
+            <Border x:Name="border1" BorderBrush="Black" BorderThickness="2" Height="39" Margin="4,0,4,3" VerticalAlignment="Bottom" CornerRadius="4" RenderTransformOrigin="0.5,0.5">
+                <Border.RenderTransform>
+                    <TransformGroup>
+                        <ScaleTransform/>
+                        <SkewTransform/>
+                        <RotateTransform/>
+                        <TranslateTransform/>
+                    </TransformGroup>
+                </Border.RenderTransform>
+                <Grid Background="{Binding Fill, ElementName=path}">
+                    <Label x:Name="label" Content="{Binding MinValue, ElementName=ArrowPointer}" HorizontalAlignment="Left" Height="21" Margin="21,1,0,0" Style="{DynamicResource LabelStyle_Value}" VerticalAlignment="Top" Width="39"/>
+                    <Label x:Name="label_Copy" Content="{Binding MaxValue, ElementName=ArrowPointer}" HorizontalAlignment="Right" Height="21" Margin="0,1,2,0" Style="{DynamicResource LabelStyle_Value}" VerticalAlignment="Top" Width="39"/>
+                    <Slider x:Name="slider" Margin="22,7,16,0" Maximum="{Binding MaxValue, ElementName=ArrowPointer}" Minimum="{Binding MinValue, ElementName=ArrowPointer}" TickPlacement="TopLeft" AutoToolTipPlacement="TopLeft" SmallChange="1" TickFrequency="10" Value="{Binding Value, ElementName=ArrowPointer, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Height="27" VerticalAlignment="Top" Style="{DynamicResource SliderStyle1}" ValueChanged="slider_ValueChanged"/>
+                </Grid>
+            </Border>
+        </Grid>
+    </Viewbox>
+</UserControl>

@@ -1,0 +1,46 @@
+<?xml version="1.0"?>
+<ProjectGuidesConfiguration xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <ProjectItemGuides>
+    <ProjectItemGuide TargetFile="CounterNumericAnim\_NumericAnimChange.xaml">
+      <GuideModels>
+        <GuideModel>
+          <Guides>
+            <Guide Alignment="Top" Position="2" />
+            <Guide Alignment="Top" Position="50" />
+          </Guides>
+        </GuideModel>
+      </GuideModels>
+    </ProjectItemGuide>
+    <ProjectItemGuide TargetFile="UGO\ucUGO_X3Valve\Ugo3xValve.xaml">
+      <GuideModels>
+        <GuideModel>
+          <Guides>
+            <Guide Alignment="Top" Position="4" />
+          </Guides>
+        </GuideModel>
+      </GuideModels>
+    </ProjectItemGuide>
+    <ProjectItemGuide TargetFile="ucNumberOfUpDown\ucNumberOfUpDown.xaml">
+      <GuideModels>
+        <GuideModel>
+          <Guides>
+            <Guide Alignment="Left" Position="49" />
+            <Guide Alignment="Left" Position="35" />
+            <Guide Alignment="Left" Position="42" />
+            <Guide Alignment="Top" Position="2" />
+            <Guide Alignment="Top" Position="9" />
+          </Guides>
+        </GuideModel>
+      </GuideModels>
+    </ProjectItemGuide>
+    <ProjectItemGuide TargetFile="Mixer\ucMixer.xaml">
+      <GuideModels>
+        <GuideModel>
+          <Guides>
+            <Guide Alignment="Top" Position="318" />
+          </Guides>
+        </GuideModel>
+      </GuideModels>
+    </ProjectItemGuide>
+  </ProjectItemGuides>
+</ProjectGuidesConfiguration>

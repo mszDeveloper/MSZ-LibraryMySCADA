@@ -1,0 +1,334 @@
+﻿<y:ClassVirtualAdd
+            xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+            xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+            xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+            xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+            xmlns:local="clr-namespace:LibraryMySCADA.Blower"
+            xmlns:y="clr-namespace:LibraryMySCADA.Virt"
+            xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity" xmlns:ei="http://schemas.microsoft.com/expression/2010/interactions"  x:Name="classVirtualAdd" 
+            x:Class="LibraryMySCADA.Blower.Blower"
+            mc:Ignorable="d" Height="320" Width="320">
+    <y:ClassVirtualAdd.Resources>
+        <!--<local:DoubleToSpeedConvert x:Key="DoubleToSpedConvert"/>-->
+        <Storyboard x:Key="OnMouseEnter1">
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[0].(ScaleTransform.ScaleX)" Storyboard.TargetName="grid">
+                <EasingDoubleKeyFrame KeyTime="0" Value="1.029"/>
+            </DoubleAnimationUsingKeyFrames>
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[0].(ScaleTransform.ScaleY)" Storyboard.TargetName="grid">
+                <EasingDoubleKeyFrame KeyTime="0" Value="1.029"/>
+            </DoubleAnimationUsingKeyFrames>
+        </Storyboard>
+        <Storyboard x:Key="OnMouseLeave1">
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[0].(ScaleTransform.ScaleX)" Storyboard.TargetName="grid">
+                <EasingDoubleKeyFrame KeyTime="0" Value="0.99"/>
+            </DoubleAnimationUsingKeyFrames>
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[0].(ScaleTransform.ScaleY)" Storyboard.TargetName="grid">
+                <EasingDoubleKeyFrame KeyTime="0" Value="0.99"/>
+            </DoubleAnimationUsingKeyFrames>
+        </Storyboard>
+        <Storyboard x:Key="AnimBlower" RepeatBehavior="Forever">
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[2].(RotateTransform.Angle)" Storyboard.TargetName="pathCircle">
+                <EasingDoubleKeyFrame KeyTime="0" Value="0"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:5" Value="360"/>
+            </DoubleAnimationUsingKeyFrames>
+        </Storyboard>
+        <BooleanToVisibilityConverter x:Key="BooleanToVisibilityConverter"/>
+    </y:ClassVirtualAdd.Resources>
+    <y:ClassVirtualAdd.Triggers>
+        <EventTrigger RoutedEvent="UIElement.MouseEnter" SourceName="grid">
+            <BeginStoryboard x:Name="OnMouseEnter1_BeginStoryboard" Storyboard="{StaticResource OnMouseEnter1}"/>
+        </EventTrigger>
+        <EventTrigger RoutedEvent="UIElement.MouseLeave" SourceName="grid">
+            <BeginStoryboard x:Name="OnMouseLeave1_BeginStoryboard" Storyboard="{StaticResource OnMouseLeave1}"/>
+        </EventTrigger>
+        <EventTrigger RoutedEvent="UIElement.MouseLeftButtonDown">
+            <BeginStoryboard x:Name="OnMouseLeave1_BeginStoryboard1" Storyboard="{StaticResource OnMouseLeave1}"/>
+        </EventTrigger>
+        <EventTrigger RoutedEvent="UIElement.MouseLeftButtonUp">
+            <BeginStoryboard x:Name="OnMouseLeave1_BeginStoryboard2" Storyboard="{StaticResource OnMouseEnter1}"/>
+        </EventTrigger>
+        <!--<EventTrigger RoutedEvent="FrameworkElement.Loaded">
+            <BeginStoryboard Storyboard="{StaticResource AnimBlower}"/>
+        </EventTrigger>-->
+    </y:ClassVirtualAdd.Triggers>
+    <Viewbox Stretch="Fill">
+        <VisualStateManager.VisualStateGroups>
+            <VisualStateGroup x:Name="VisualStateGroup">
+                <VisualState x:Name="AnimOn">
+                    <Storyboard x:Name="BlowerAnim" RepeatBehavior="Forever" Duration="{Binding Speed, ElementName=classVirtualAdd, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}">
+                        <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="(ScrollViewer.VerticalScrollBarVisibility)" Storyboard.TargetName="pathFlow1">
+                            <DiscreteObjectKeyFrame KeyTime="0" Value="{x:Static ScrollBarVisibility.Disabled}"/>
+                        </ObjectAnimationUsingKeyFrames>
+                        <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Visibility)" Storyboard.TargetName="pathFlow1">
+                            <DiscreteObjectKeyFrame KeyTime="0" Value="{x:Static Visibility.Visible}"/>
+                        </ObjectAnimationUsingKeyFrames>
+                        <ColorAnimationUsingKeyFrames Storyboard.TargetProperty="(Shape.Stroke).(SolidColorBrush.Color)" Storyboard.TargetName="pathFlow1">
+                            <SplineColorKeyFrame KeyTime="0" Value="#FFF0F0F0"/>
+                        </ColorAnimationUsingKeyFrames>
+                        <PointAnimationUsingKeyFrames Storyboard.TargetProperty="(Path.Data).(PathGeometry.Figures)[0].(PathFigure.Segments)[0].(LineSegment.Point)" Storyboard.TargetName="pathFlow1">
+                            <SplinePointKeyFrame KeyTime="0" Value="22,22"/>
+                            <EasingPointKeyFrame KeyTime="0:0:0.45" Value="22,12"/>
+                            <EasingPointKeyFrame KeyTime="0:0:0.9" Value="22,2"/>
+                            <EasingPointKeyFrame KeyTime="0:0:1.35" Value="22,12"/>
+                            <EasingPointKeyFrame KeyTime="0:0:1.8" Value="22,22"/>
+                        </PointAnimationUsingKeyFrames>
+                        <PointAnimationUsingKeyFrames Storyboard.TargetProperty="(Path.Data).(PathGeometry.Figures)[0].(PathFigure.Segments)[2].(LineSegment.Point)" Storyboard.TargetName="pathFlow1">
+                            <SplinePointKeyFrame KeyTime="0" Value="62,2"/>
+                            <EasingPointKeyFrame KeyTime="0:0:0.45" Value="62,12"/>
+                            <EasingPointKeyFrame KeyTime="0:0:0.9" Value="62,22"/>
+                            <EasingPointKeyFrame KeyTime="0:0:1.35" Value="62,12"/>
+                            <EasingPointKeyFrame KeyTime="0:0:1.8" Value="62,2.00000000000003"/>
+                        </PointAnimationUsingKeyFrames>
+                        <PointAnimationUsingKeyFrames Storyboard.TargetProperty="(Path.Data).(PathGeometry.Figures)[0].(PathFigure.Segments)[4].(LineSegment.Point)" Storyboard.TargetName="pathFlow1">
+                            <SplinePointKeyFrame KeyTime="0" Value="102,22"/>
+                            <EasingPointKeyFrame KeyTime="0:0:0.45" Value="102,12"/>
+                            <EasingPointKeyFrame KeyTime="0:0:0.9" Value="103,2"/>
+                            <EasingPointKeyFrame KeyTime="0:0:1.35" Value="102,12"/>
+                            <EasingPointKeyFrame KeyTime="0:0:1.8" Value="102,22"/>
+                        </PointAnimationUsingKeyFrames>
+                        <PointAnimationUsingKeyFrames Storyboard.TargetProperty="(Path.Data).(PathGeometry.Figures)[0].(PathFigure.Segments)[3].(LineSegment.Point)" Storyboard.TargetName="pathFlow1">
+                            <SplinePointKeyFrame KeyTime="0" Value="82,12"/>
+                            <EasingPointKeyFrame KeyTime="0:0:0.45" Value="82,22"/>
+                            <EasingPointKeyFrame KeyTime="0:0:0.9" Value="82,12"/>
+                            <EasingPointKeyFrame KeyTime="0:0:1.35" Value="82,2"/>
+                            <EasingPointKeyFrame KeyTime="0:0:1.8" Value="82,12"/>
+                        </PointAnimationUsingKeyFrames>
+                        <PointAnimationUsingKeyFrames Storyboard.TargetProperty="(Path.Data).(PathGeometry.Figures)[0].(PathFigure.Segments)[1].(LineSegment.Point)" Storyboard.TargetName="pathFlow1">
+                            <SplinePointKeyFrame KeyTime="0" Value="41.9997050553131,12.1104851"/>
+                            <EasingPointKeyFrame KeyTime="0:0:0.45" Value="41.9999999999998,2"/>
+                            <EasingPointKeyFrame KeyTime="0:0:0.9" Value="42,12"/>
+                            <EasingPointKeyFrame KeyTime="0:0:1.35" Value="42,22"/>
+                            <EasingPointKeyFrame KeyTime="0:0:1.8" Value="42,12"/>
+                        </PointAnimationUsingKeyFrames>
+                        <PointAnimationUsingKeyFrames Storyboard.TargetProperty="(Path.Data).(PathGeometry.Figures)[0].(PathFigure.Segments)[5].(LineSegment.Point)" Storyboard.TargetName="pathFlow1">
+                            <SplinePointKeyFrame KeyTime="0" Value="122.333010055313,12.3333078"/>
+                            <EasingPointKeyFrame KeyTime="0:0:0.45" Value="122,2"/>
+                            <EasingPointKeyFrame KeyTime="0:0:0.9" Value="122,12"/>
+                            <EasingPointKeyFrame KeyTime="0:0:1.35" Value="122,22"/>
+                            <EasingPointKeyFrame KeyTime="0:0:1.8" Value="122,12"/>
+                        </PointAnimationUsingKeyFrames>
+                        <PointAnimationUsingKeyFrames Storyboard.TargetProperty="(Path.Data).(PathGeometry.Figures)[0].(PathFigure.StartPoint)" Storyboard.TargetName="pathFlow1">
+                            <EasingPointKeyFrame KeyTime="0:0:0.45" Value="2,22"/>
+                            <EasingPointKeyFrame KeyTime="0:0:0.9" Value="2,12"/>
+                            <EasingPointKeyFrame KeyTime="0:0:1.35" Value="2,2"/>
+                            <EasingPointKeyFrame KeyTime="0:0:1.8" Value="2,12"/>
+                        </PointAnimationUsingKeyFrames>
+                        <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Opacity)" Storyboard.TargetName="pathFlow2">
+                            <EasingDoubleKeyFrame KeyTime="0" Value="1"/>
+                        </DoubleAnimationUsingKeyFrames>
+                        <PointAnimationUsingKeyFrames Storyboard.TargetProperty="(Path.Data).(PathGeometry.Figures)[0].(PathFigure.Segments)[0].(LineSegment.Point)" Storyboard.TargetName="pathFlow2">
+                            <EasingPointKeyFrame KeyTime="0" Value="22,22"/>
+                            <EasingPointKeyFrame KeyTime="0:0:0.45" Value="22,12"/>
+                            <EasingPointKeyFrame KeyTime="0:0:0.9" Value="22,1.99999999999999"/>
+                            <EasingPointKeyFrame KeyTime="0:0:1.35" Value="22,12"/>
+                            <EasingPointKeyFrame KeyTime="0:0:1.8" Value="22,22"/>
+                        </PointAnimationUsingKeyFrames>
+                        <PointAnimationUsingKeyFrames Storyboard.TargetProperty="(Path.Data).(PathGeometry.Figures)[0].(PathFigure.Segments)[2].(LineSegment.Point)" Storyboard.TargetName="pathFlow2">
+                            <EasingPointKeyFrame KeyTime="0" Value="62,2"/>
+                            <EasingPointKeyFrame KeyTime="0:0:0.45" Value="62,12"/>
+                            <EasingPointKeyFrame KeyTime="0:0:0.9" Value="62,22"/>
+                            <EasingPointKeyFrame KeyTime="0:0:1.35" Value="62,12"/>
+                            <EasingPointKeyFrame KeyTime="0:0:1.8" Value="62,1.99999999999999"/>
+                        </PointAnimationUsingKeyFrames>
+                        <PointAnimationUsingKeyFrames Storyboard.TargetProperty="(Path.Data).(PathGeometry.Figures)[0].(PathFigure.Segments)[4].(LineSegment.Point)" Storyboard.TargetName="pathFlow2">
+                            <EasingPointKeyFrame KeyTime="0" Value="102,22"/>
+                            <EasingPointKeyFrame KeyTime="0:0:0.45" Value="102,12"/>
+                            <EasingPointKeyFrame KeyTime="0:0:0.9" Value="102,2"/>
+                            <EasingPointKeyFrame KeyTime="0:0:1.35" Value="102,12"/>
+                            <EasingPointKeyFrame KeyTime="0:0:1.8" Value="102,22"/>
+                        </PointAnimationUsingKeyFrames>
+                        <PointAnimationUsingKeyFrames Storyboard.TargetProperty="(Path.Data).(PathGeometry.Figures)[0].(PathFigure.StartPoint)" Storyboard.TargetName="pathFlow2">
+                            <EasingPointKeyFrame KeyTime="0" Value="2.1670001,12"/>
+                            <EasingPointKeyFrame KeyTime="0:0:0.45" Value="2,22"/>
+                            <EasingPointKeyFrame KeyTime="0:0:0.9" Value="2,12"/>
+                            <EasingPointKeyFrame KeyTime="0:0:1.35" Value="2,2"/>
+                            <EasingPointKeyFrame KeyTime="0:0:1.8" Value="2,12"/>
+                        </PointAnimationUsingKeyFrames>
+                        <PointAnimationUsingKeyFrames Storyboard.TargetProperty="(Path.Data).(PathGeometry.Figures)[0].(PathFigure.Segments)[1].(LineSegment.Point)" Storyboard.TargetName="pathFlow2">
+                            <EasingPointKeyFrame KeyTime="0" Value="41.999705,12.110485"/>
+                            <EasingPointKeyFrame KeyTime="0:0:0.45" Value="41.9999999999999,1.99999999999999"/>
+                            <EasingPointKeyFrame KeyTime="0:0:0.9" Value="42.0000000000001,12"/>
+                            <EasingPointKeyFrame KeyTime="0:0:1.35" Value="41.9999999999999,22"/>
+                            <EasingPointKeyFrame KeyTime="0:0:1.8" Value="42,12"/>
+                        </PointAnimationUsingKeyFrames>
+                        <PointAnimationUsingKeyFrames Storyboard.TargetProperty="(Path.Data).(PathGeometry.Figures)[0].(PathFigure.Segments)[3].(LineSegment.Point)" Storyboard.TargetName="pathFlow2">
+                            <EasingPointKeyFrame KeyTime="0" Value="82.000079,12.221435"/>
+                            <EasingPointKeyFrame KeyTime="0:0:0.45" Value="81.9999999999999,22"/>
+                            <EasingPointKeyFrame KeyTime="0:0:0.9" Value="82.0000000000001,12"/>
+                            <EasingPointKeyFrame KeyTime="0:0:1.35" Value="81.9999999999999,2"/>
+                            <EasingPointKeyFrame KeyTime="0:0:1.8" Value="82.0000000000001,12"/>
+                        </PointAnimationUsingKeyFrames>
+                        <PointAnimationUsingKeyFrames Storyboard.TargetProperty="(Path.Data).(PathGeometry.Figures)[0].(PathFigure.Segments)[5].(LineSegment.Point)" Storyboard.TargetName="pathFlow2">
+                            <EasingPointKeyFrame KeyTime="0" Value="122.33301,12.333308"/>
+                            <EasingPointKeyFrame KeyTime="0:0:0.45" Value="122,1.99999999999998"/>
+                            <EasingPointKeyFrame KeyTime="0:0:0.9" Value="122,12"/>
+                            <EasingPointKeyFrame KeyTime="0:0:1.35" Value="122,22"/>
+                            <EasingPointKeyFrame KeyTime="0:0:1.8" Value="122,12"/>
+                        </PointAnimationUsingKeyFrames>
+                        <PointAnimationUsingKeyFrames Storyboard.TargetProperty="(Path.Data).(PathGeometry.Figures)[0].(PathFigure.Segments)[0].(LineSegment.Point)" Storyboard.TargetName="pathFlow3">
+                            <EasingPointKeyFrame KeyTime="0" Value="22,22"/>
+                            <EasingPointKeyFrame KeyTime="0:0:0.45" Value="22,12"/>
+                            <EasingPointKeyFrame KeyTime="0:0:0.9" Value="22,1.99999999999999"/>
+                            <EasingPointKeyFrame KeyTime="0:0:1.35" Value="22,12"/>
+                            <EasingPointKeyFrame KeyTime="0:0:1.8" Value="22,22"/>
+                        </PointAnimationUsingKeyFrames>
+                        <PointAnimationUsingKeyFrames Storyboard.TargetProperty="(Path.Data).(PathGeometry.Figures)[0].(PathFigure.Segments)[2].(LineSegment.Point)" Storyboard.TargetName="pathFlow3">
+                            <EasingPointKeyFrame KeyTime="0" Value="62,2"/>
+                            <EasingPointKeyFrame KeyTime="0:0:0.45" Value="62.0000000000001,12"/>
+                            <EasingPointKeyFrame KeyTime="0:0:0.9" Value="62,22"/>
+                            <EasingPointKeyFrame KeyTime="0:0:1.35" Value="62,12"/>
+                            <EasingPointKeyFrame KeyTime="0:0:1.8" Value="62,2"/>
+                        </PointAnimationUsingKeyFrames>
+                        <PointAnimationUsingKeyFrames Storyboard.TargetProperty="(Path.Data).(PathGeometry.Figures)[0].(PathFigure.Segments)[4].(LineSegment.Point)" Storyboard.TargetName="pathFlow3">
+                            <EasingPointKeyFrame KeyTime="0" Value="102,22"/>
+                            <EasingPointKeyFrame KeyTime="0:0:0.45" Value="102,12"/>
+                            <EasingPointKeyFrame KeyTime="0:0:0.9" Value="102,1.99999999999999"/>
+                            <EasingPointKeyFrame KeyTime="0:0:1.35" Value="102,12"/>
+                            <EasingPointKeyFrame KeyTime="0:0:1.8" Value="102,22"/>
+                        </PointAnimationUsingKeyFrames>
+                        <PointAnimationUsingKeyFrames Storyboard.TargetProperty="(Path.Data).(PathGeometry.Figures)[0].(PathFigure.StartPoint)" Storyboard.TargetName="pathFlow3">
+                            <EasingPointKeyFrame KeyTime="0" Value="2.1670001,12"/>
+                            <EasingPointKeyFrame KeyTime="0:0:0.45" Value="2,22"/>
+                            <EasingPointKeyFrame KeyTime="0:0:0.9" Value="2,12"/>
+                            <EasingPointKeyFrame KeyTime="0:0:1.35" Value="2,1.99999999999998"/>
+                            <EasingPointKeyFrame KeyTime="0:0:1.8" Value="2,12"/>
+                        </PointAnimationUsingKeyFrames>
+                        <PointAnimationUsingKeyFrames Storyboard.TargetProperty="(Path.Data).(PathGeometry.Figures)[0].(PathFigure.Segments)[1].(LineSegment.Point)" Storyboard.TargetName="pathFlow3">
+                            <EasingPointKeyFrame KeyTime="0" Value="41.999705,12.110485"/>
+                            <EasingPointKeyFrame KeyTime="0:0:0.45" Value="41.9999999999999,1.99999999999999"/>
+                            <EasingPointKeyFrame KeyTime="0:0:0.9" Value="42,12"/>
+                            <EasingPointKeyFrame KeyTime="0:0:1.35" Value="42,22"/>
+                            <EasingPointKeyFrame KeyTime="0:0:1.8" Value="42,12"/>
+                        </PointAnimationUsingKeyFrames>
+                        <PointAnimationUsingKeyFrames Storyboard.TargetProperty="(Path.Data).(PathGeometry.Figures)[0].(PathFigure.Segments)[3].(LineSegment.Point)" Storyboard.TargetName="pathFlow3">
+                            <EasingPointKeyFrame KeyTime="0" Value="82.000079,12.221435"/>
+                            <EasingPointKeyFrame KeyTime="0:0:0.45" Value="81.9999999999999,22"/>
+                            <EasingPointKeyFrame KeyTime="0:0:0.9" Value="82.0000000000001,12"/>
+                            <EasingPointKeyFrame KeyTime="0:0:1.35" Value="81.9999999999999,2"/>
+                            <EasingPointKeyFrame KeyTime="0:0:1.8" Value="82.0000000000001,12"/>
+                        </PointAnimationUsingKeyFrames>
+                        <PointAnimationUsingKeyFrames Storyboard.TargetProperty="(Path.Data).(PathGeometry.Figures)[0].(PathFigure.Segments)[5].(LineSegment.Point)" Storyboard.TargetName="pathFlow3">
+                            <EasingPointKeyFrame KeyTime="0" Value="122.33301,12.333308"/>
+                            <EasingPointKeyFrame KeyTime="0:0:0.45" Value="122,2"/>
+                            <EasingPointKeyFrame KeyTime="0:0:0.9" Value="122,12"/>
+                            <EasingPointKeyFrame KeyTime="0:0:1.35" Value="122,22"/>
+                            <EasingPointKeyFrame KeyTime="0:0:1.8" Value="122,12"/>
+                        </PointAnimationUsingKeyFrames>
+                        <ColorAnimationUsingKeyFrames Storyboard.TargetProperty="(Shape.Stroke).(SolidColorBrush.Color)" Storyboard.TargetName="pathFlow2">
+                            <EasingColorKeyFrame KeyTime="0" Value="#FFF0F0F0"/>
+                            <EasingColorKeyFrame KeyTime="0:0:0.45" Value="#FFF0F0F0"/>
+                        </ColorAnimationUsingKeyFrames>
+                        <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Visibility)" Storyboard.TargetName="pathFlow2">
+                            <DiscreteObjectKeyFrame KeyTime="0" Value="{x:Static Visibility.Visible}"/>
+                            <DiscreteObjectKeyFrame KeyTime="0:0:0.45" Value="{x:Static Visibility.Visible}"/>
+                            <DiscreteObjectKeyFrame KeyTime="0:0:1.35" Value="{x:Static Visibility.Visible}"/>
+                            <DiscreteObjectKeyFrame KeyTime="0:0:1.8" Value="{x:Static Visibility.Visible}"/>
+                        </ObjectAnimationUsingKeyFrames>
+                        <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Visibility)" Storyboard.TargetName="pathFlow3">
+                            <DiscreteObjectKeyFrame KeyTime="0" Value="{x:Static Visibility.Visible}"/>
+                            <DiscreteObjectKeyFrame KeyTime="0:0:0.45" Value="{x:Static Visibility.Visible}"/>
+                            <DiscreteObjectKeyFrame KeyTime="0:0:1.35" Value="{x:Static Visibility.Visible}"/>
+                            <DiscreteObjectKeyFrame KeyTime="0:0:1.8" Value="{x:Static Visibility.Visible}"/>
+                        </ObjectAnimationUsingKeyFrames>
+                    </Storyboard>
+                </VisualState>
+                <VisualState x:Name="AnimOff"/>
+            </VisualStateGroup>
+        </VisualStateManager.VisualStateGroups>
+        <Grid Height="320" Width="320">
+            <i:Interaction.Behaviors>
+                <ei:DataStateBehavior Binding="{Binding OnOff, ElementName=classVirtualAdd}" Value="true" TrueState="AnimOn" FalseState="AnimOff"/>
+            </i:Interaction.Behaviors>
+            <Grid x:Name="grid" RenderTransformOrigin="0.5,0.5">
+                <Grid.LayoutTransform>
+                    <TransformGroup>
+                        <ScaleTransform ScaleX="{Binding MirorBlower, ElementName=classVirtualAdd}"/>
+                        <SkewTransform/>
+                        <RotateTransform/>
+                        <TranslateTransform/>
+                    </TransformGroup>
+                </Grid.LayoutTransform>
+                <Grid.RenderTransform>
+                    <TransformGroup>
+                        <ScaleTransform/>
+                        <SkewTransform/>
+                        <RotateTransform/>
+                        <TranslateTransform/>
+                    </TransformGroup>
+                </Grid.RenderTransform>
+                <Path x:Name="lapi" Data="M2.5000001,51.500008 L44,2.5000001 84,27.500018 95.241,51.464019 z M255.741,51.500008 L214.241,2.5000048 174.241,27.500014 163,51.464017 z" Fill="{Binding Fill, ElementName=path2}" HorizontalAlignment="Left" Height="54" Margin="171.5,229,-109.741,0" Stretch="Fill" Stroke="Black" VerticalAlignment="Top" Width="258.241" StrokeThickness="5" RenderTransformOrigin="0.189243770385892,0.500000198682126">
+                    <Path.RenderTransform>
+                        <TransformGroup>
+                            <ScaleTransform ScaleY="1" ScaleX="-1"/>
+                            <SkewTransform AngleY="0" AngleX="0"/>
+                            <RotateTransform Angle="0"/>
+                            <TranslateTransform/>
+                        </TransformGroup>
+                    </Path.RenderTransform>
+                </Path>
+                <Path x:Name="path2" Data="M125,2 C130.30711,1.9999983 135.53572,2.3361126 140.6657,2.9882189 L143.13683,3.334 283,3.334 283,136 247.50492,136 247.36497,137.57603 C241.06614,199.59953 188.68533,248 125,248 57.068977,248 2,192.93103 2,125 2,57.068972 57.068977,1.9999983 125,2 z" HorizontalAlignment="Left" Height="250" Margin="15.667,15.333,0,0" Stretch="Fill" Stroke="#FF2C2626" StrokeThickness="4" VerticalAlignment="Top" Width="285" Fill="{Binding Foreground, ElementName=classVirtualAdd}"/>
+                <Path x:Name="pathFlow1" HorizontalAlignment="Left" Height="24" Margin="238,28,-82,0" Stroke="#FFF0F0F0" StrokeThickness="4" VerticalAlignment="Top" Width="164" Visibility="Collapsed">
+                    <Path.Data>
+                        <PathGeometry>
+                            <PathFigure StartPoint="2.16700005531311,12">
+                                <LineSegment Point="22.2505420553131,12.0557063"/>
+                                <LineSegment Point="41.9997050553131,12.1104851"/>
+                                <LineSegment Point="61.7495420553131,12.1652658"/>
+                                <LineSegment Point="82.0000790553131,12.2214353"/>
+                                <LineSegment Point="102.499230055313,12.2782943"/>
+                                <LineSegment Point="122.333010055313,12.3333078"/>
+                            </PathFigure>
+                        </PathGeometry>
+                    </Path.Data>
+                </Path>
+                <Path x:Name="pathFlow2" HorizontalAlignment="Left" Height="24" Margin="238,70,-82,0" Stroke="#FFF0F0F0" StrokeThickness="4" VerticalAlignment="Top" Width="164" Opacity="0" Visibility="Collapsed">
+                    <Path.Data>
+                        <PathGeometry>
+                            <PathFigure StartPoint="2.1670001,12">
+                                <LineSegment Point="22.250542,12.055706"/>
+                                <LineSegment Point="41.999705,12.110485"/>
+                                <LineSegment Point="61.749542,12.165266"/>
+                                <LineSegment Point="82.000079,12.221435"/>
+                                <LineSegment Point="102.49923,12.278294"/>
+                                <LineSegment Point="122.33301,12.333308"/>
+                            </PathFigure>
+                        </PathGeometry>
+                    </Path.Data>
+                </Path>
+                <Path x:Name="pathFlow3" HorizontalAlignment="Left" Height="24" Margin="238,116,-82,0" Stroke="#FFF0F0F0" StrokeThickness="4" VerticalAlignment="Top" Width="164" Visibility="Collapsed">
+                    <Path.Data>
+                        <PathGeometry>
+                            <PathFigure StartPoint="2.1670001,12">
+                                <LineSegment Point="22.250542,12.055706"/>
+                                <LineSegment Point="41.999705,12.110485"/>
+                                <LineSegment Point="61.749542,12.165266"/>
+                                <LineSegment Point="82.000079,12.221435"/>
+                                <LineSegment Point="102.49923,12.278294"/>
+                                <LineSegment Point="122.33301,12.333308"/>
+                            </PathFigure>
+                        </PathGeometry>
+                    </Path.Data>
+                </Path>
+                <Path Data="M127.63667,11.999999 L127.63667,12.078616 125.66134,12.153541 C63.204739,15.31395 13.538,66.86695 13.537998,130 13.538,195.1696 66.460724,248 131.74422,248 190.90738,248 239.91878,204.61098 248.58842,147.97023 L248.61673,140 286.46201,140 286.46201,11.999999 131.74422,11.999999 z M125.74582,2 L130.20067,2 298,2 298,149.27412 256.9549,149.27412 256.92419,149.49313 C247.5215,210.93393 194.36613,258 130.20067,258 59.397396,258 2,200.69244 2,130 2,61.516688 55.866112,5.5947928 123.60349,2.166554 L125.74582,2.0852771 z" Fill="{Binding BorderBrush, ElementName=classVirtualAdd}" HorizontalAlignment="Left" Height="260" Margin="10,10,0,0" Stretch="Fill" Stroke="Black" StrokeThickness="4" VerticalAlignment="Top" Width="300" IsEnabled="False"/>
+                <Path x:Name="pathCircle" Data="M110,51 C77.415199,51 51,77.415199 51,110 51,142.58479 77.415199,169 110,169 142.58479,169 169,142.58479 169,110 169,77.415199 142.58479,51 110,51 z M110,2 C169.64676,2 218,50.353249 218,110 218,169.64676 169.64676,218 110,218 50.353249,218 2,169.64676 2,110 2,50.353249 50.353249,2 110,2 z M110.167,51.083 L184.167,32.833 M168.917,109.583 L187.417,184.583 M110.167,169.333 L34.667,186.833 M50.667,109.833 L33.667,34.333" HorizontalAlignment="Left" Height="220" Margin="30.333,30.834,0,0" Stretch="Fill" Stroke="#FFF0F0F0" StrokeThickness="9" VerticalAlignment="Top" Width="220" RenderTransformOrigin="0.5,0.5">
+                    <Path.RenderTransform>
+                        <TransformGroup>
+                            <ScaleTransform/>
+                            <SkewTransform/>
+                            <RotateTransform/>
+                            <TranslateTransform/>
+                        </TransformGroup>
+                    </Path.RenderTransform>
+                </Path>
+
+            </Grid>
+            <Viewbox Margin="-18.113,-35.364,224.348,209.963" Stretch="Fill" Visibility="{Binding Auto, Converter={StaticResource BooleanToVisibilityConverter}, ElementName=classVirtualAdd}">
+                <TextBlock TextWrapping="Wrap" Text="A" Foreground="#FFC79A01" FontFamily="Mongolian Baiti" FontSize="72" FontWeight="Bold" FontStyle="Italic" Visibility="{Binding Auto, Converter={StaticResource BooleanToVisibilityConverter}, ElementName=userControl}" Height="75.724" Width="65.913">
+                    <TextBlock.Effect>
+                        <DropShadowEffect/>
+                    </TextBlock.Effect>
+                </TextBlock>
+            </Viewbox>
+        </Grid>
+    </Viewbox>
+</y:ClassVirtualAdd>

@@ -1,0 +1,13 @@
+﻿<UserControl
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:wpfTestLibProject"
+             xmlns:Chart="clr-namespace:wpfLibMszControl.Chart;assembly=LibraryMySCADA" x:Class="wpfTestLibProject.UserControl1"
+             mc:Ignorable="d" 
+             d:DesignHeight="289" d:DesignWidth="646" UseLayoutRounding="False">
+    <Grid>
+        <!--<Chart:ucChart HorizontalAlignment="Left" Height="269" Margin="10,10,0,0" VerticalAlignment="Top" Width="626" MaxY="5"/>-->
+    </Grid>
+</UserControl>

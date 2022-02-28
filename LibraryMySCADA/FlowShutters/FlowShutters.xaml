@@ -1,0 +1,31 @@
+﻿<y:ClassVirtualAdd x:Name="classVirtualAdd"
+    x:Class="LibraryMySCADA.FlowShutters.FlowShutters"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:LibraryMySCADA.FlowShutters"
+             xmlns:y="clr-namespace:LibraryMySCADA.Virt"
+             mc:Ignorable="d" Height="33.667" Width="35.333">
+    <y:ClassVirtualAdd.Resources>
+        <local:OpenToAngleConvertor x:Key="OpenToAngleConvertor"/>
+    </y:ClassVirtualAdd.Resources>
+    <Viewbox Stretch="Fill">
+        <Grid Height="33.667" Width="35.333">
+            <Rectangle Fill="#FFE6E6E6" RadiusY="2" RadiusX="2" Stroke="#FFCDCDCD"/>
+
+            <Rectangle Fill="#FFBDBDBD" Stroke="Black" RadiusY="1.5" RadiusX="1.5" RenderTransformOrigin="0.5,0.5" Margin="15.416,1.25,15.417,1.25">
+                <Rectangle.RenderTransform>
+                    <TransformGroup>
+                        <ScaleTransform ScaleX="-1"/>
+                        <SkewTransform/>
+                        <RotateTransform Angle="{Binding openShutter, Converter={StaticResource OpenToAngleConvertor}, ElementName=classVirtualAdd, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+                        <TranslateTransform/>
+                    </TransformGroup>
+                </Rectangle.RenderTransform>
+            </Rectangle>
+            <Ellipse Fill="#FF055B74" Stroke="Black" RenderTransformOrigin="0.5,0.5" Margin="14,13.34"/>
+
+        </Grid>
+    </Viewbox>
+</y:ClassVirtualAdd>
