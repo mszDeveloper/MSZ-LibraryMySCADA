@@ -55,7 +55,9 @@ namespace LibraryMySCADA
             try
             {
                 sr = new StringReader(str);
-             return (T)serializer.Deserialize(sr); }catch
+                return (T)serializer.Deserialize(sr); 
+            }
+            catch
             {
                 return default(T);
             }
