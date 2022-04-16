@@ -1,0 +1,10 @@
+<?xml version="1.0"?>
+<dataPort xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <portName>COM6</portName>
+  <baudRate>9600</baudRate>
+  <dataBits>8</dataBits>
+  <parity>None</parity>
+  <stopBits>One</stopBits>
+  <readTimeout>450</readTimeout>
+  <writeTimeout>450</writeTimeout>
+</dataPort>
